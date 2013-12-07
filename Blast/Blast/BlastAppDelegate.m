@@ -18,7 +18,6 @@
     self.locationManager.distanceFilter = kCLDistanceFilterNone;
     self.locationManager.pausesLocationUpdatesAutomatically = NO;
     [self.locationManager startMonitoringSignificantLocationChanges];
-
     return YES;
 }
 							

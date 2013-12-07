@@ -6,13 +6,13 @@
 //
 //
 
-#import "BlastFirstViewController.h"
+#import "BlastMainViewController.h"
 
-@interface BlastFirstViewController ()
+@interface BlastMainViewController ()
 
 @end
 
-@implementation BlastFirstViewController
+@implementation BlastMainViewController
 
 - (void)viewDidLoad
 {

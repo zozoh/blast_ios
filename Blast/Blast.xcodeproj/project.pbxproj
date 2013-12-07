@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A503FC2A185339E300823962 /* PGError.m in Sources */ = {isa = PBXBuildFile; fileRef = A503FC21185339E300823962 /* PGError.m */; };
+		A503FC2B185339E300823962 /* PGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A503FC23185339E300823962 /* PGRequest.m */; };
+		A503FC2C185339E300823962 /* PGRequestConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = A503FC25185339E300823962 /* PGRequestConnection.m */; };
+		A503FC2D185339E300823962 /* PGURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = A503FC27185339E300823962 /* PGURLConnection.m */; };
+		A503FC2E185339E300823962 /* PGUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = A503FC29185339E300823962 /* PGUtility.m */; };
+		A503FC3218533A2200823962 /* BlastWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A503FC3118533A2200823962 /* BlastWelcomeViewController.m */; };
 		A52A0CAE1852FBD6008DC2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A52A0CAD1852FBD6008DC2B1 /* Foundation.framework */; };
 		A52A0CB01852FBD6008DC2B1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A52A0CAF1852FBD6008DC2B1 /* CoreGraphics.framework */; };
 		A52A0CB21852FBD6008DC2B1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A52A0CB11852FBD6008DC2B1 /* UIKit.framework */; };
@@ -14,7 +20,7 @@
 		A52A0CBA1852FBD6008DC2B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A0CB91852FBD6008DC2B1 /* main.m */; };
 		A52A0CBE1852FBD6008DC2B1 /* BlastAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A0CBD1852FBD6008DC2B1 /* BlastAppDelegate.m */; };
 		A52A0CC11852FBD6008DC2B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A52A0CBF1852FBD6008DC2B1 /* Main.storyboard */; };
-		A52A0CC41852FBD6008DC2B1 /* BlastFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A0CC31852FBD6008DC2B1 /* BlastFirstViewController.m */; };
+		A52A0CC41852FBD6008DC2B1 /* BlastMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A0CC31852FBD6008DC2B1 /* BlastMainViewController.m */; };
 		A52A0CC71852FBD6008DC2B1 /* BlastSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A0CC61852FBD6008DC2B1 /* BlastSecondViewController.m */; };
 		A52A0CC91852FBD6008DC2B1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A52A0CC81852FBD6008DC2B1 /* Images.xcassets */; };
 		A52A0CD01852FBD6008DC2B1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A52A0CCF1852FBD6008DC2B1 /* XCTest.framework */; };
@@ -39,6 +45,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A503FC20185339E300823962 /* PGError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGError.h; sourceTree = "<group>"; };
+		A503FC21185339E300823962 /* PGError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGError.m; sourceTree = "<group>"; };
+		A503FC22185339E300823962 /* PGRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGRequest.h; sourceTree = "<group>"; };
+		A503FC23185339E300823962 /* PGRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGRequest.m; sourceTree = "<group>"; };
+		A503FC24185339E300823962 /* PGRequestConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGRequestConnection.h; sourceTree = "<group>"; };
+		A503FC25185339E300823962 /* PGRequestConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGRequestConnection.m; sourceTree = "<group>"; };
+		A503FC26185339E300823962 /* PGURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGURLConnection.h; sourceTree = "<group>"; };
+		A503FC27185339E300823962 /* PGURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGURLConnection.m; sourceTree = "<group>"; };
+		A503FC28185339E300823962 /* PGUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGUtility.h; sourceTree = "<group>"; };
+		A503FC29185339E300823962 /* PGUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGUtility.m; sourceTree = "<group>"; };
+		A503FC3018533A2200823962 /* BlastWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlastWelcomeViewController.h; sourceTree = "<group>"; };
+		A503FC3118533A2200823962 /* BlastWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlastWelcomeViewController.m; sourceTree = "<group>"; };
 		A52A0CAA1852FBD6008DC2B1 /* Blast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A52A0CAD1852FBD6008DC2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A52A0CAF1852FBD6008DC2B1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -50,8 +68,8 @@
 		A52A0CBC1852FBD6008DC2B1 /* BlastAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlastAppDelegate.h; sourceTree = "<group>"; };
 		A52A0CBD1852FBD6008DC2B1 /* BlastAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlastAppDelegate.m; sourceTree = "<group>"; };
 		A52A0CC01852FBD6008DC2B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A52A0CC21852FBD6008DC2B1 /* BlastFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlastFirstViewController.h; sourceTree = "<group>"; };
-		A52A0CC31852FBD6008DC2B1 /* BlastFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlastFirstViewController.m; sourceTree = "<group>"; };
+		A52A0CC21852FBD6008DC2B1 /* BlastMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlastMainViewController.h; sourceTree = "<group>"; };
+		A52A0CC31852FBD6008DC2B1 /* BlastMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlastMainViewController.m; sourceTree = "<group>"; };
 		A52A0CC51852FBD6008DC2B1 /* BlastSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlastSecondViewController.h; sourceTree = "<group>"; };
 		A52A0CC61852FBD6008DC2B1 /* BlastSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlastSecondViewController.m; sourceTree = "<group>"; };
 		A52A0CC81852FBD6008DC2B1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -94,6 +112,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A503FC1F185339CA00823962 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				A503FC2F185339E800823962 /* PGURL */,
+			);
+			name = Lib;
+			sourceTree = "<group>";
+		};
+		A503FC2F185339E800823962 /* PGURL */ = {
+			isa = PBXGroup;
+			children = (
+				A503FC20185339E300823962 /* PGError.h */,
+				A503FC21185339E300823962 /* PGError.m */,
+				A503FC22185339E300823962 /* PGRequest.h */,
+				A503FC23185339E300823962 /* PGRequest.m */,
+				A503FC24185339E300823962 /* PGRequestConnection.h */,
+				A503FC25185339E300823962 /* PGRequestConnection.m */,
+				A503FC26185339E300823962 /* PGURLConnection.h */,
+				A503FC27185339E300823962 /* PGURLConnection.m */,
+				A503FC28185339E300823962 /* PGUtility.h */,
+				A503FC29185339E300823962 /* PGUtility.m */,
+			);
+			name = PGURL;
+			sourceTree = "<group>";
+		};
 		A52A0CA11852FBD6008DC2B1 = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +171,7 @@
 		A52A0CB31852FBD6008DC2B1 /* Blast */ = {
 			isa = PBXGroup;
 			children = (
+				A503FC1F185339CA00823962 /* Lib */,
 				A52A0CF2185328A5008DC2B1 /* SVAnnotation.h */,
 				A52A0CF3185328A5008DC2B1 /* SVAnnotation.m */,
 				A52A0CEF18532812008DC2B1 /* SVPulsingAnnotationView.h */,
@@ -135,14 +179,16 @@
 				A52A0CBC1852FBD6008DC2B1 /* BlastAppDelegate.h */,
 				A52A0CBD1852FBD6008DC2B1 /* BlastAppDelegate.m */,
 				A52A0CBF1852FBD6008DC2B1 /* Main.storyboard */,
-				A52A0CC21852FBD6008DC2B1 /* BlastFirstViewController.h */,
-				A52A0CC31852FBD6008DC2B1 /* BlastFirstViewController.m */,
+				A52A0CC21852FBD6008DC2B1 /* BlastMainViewController.h */,
+				A52A0CC31852FBD6008DC2B1 /* BlastMainViewController.m */,
 				A52A0CC51852FBD6008DC2B1 /* BlastSecondViewController.h */,
 				A52A0CC61852FBD6008DC2B1 /* BlastSecondViewController.m */,
 				A52A0CC81852FBD6008DC2B1 /* Images.xcassets */,
 				A52A0CB41852FBD6008DC2B1 /* Supporting Files */,
 				A52A0CE51852FC2A008DC2B1 /* MyMapViewController.h */,
 				A52A0CE61852FC2A008DC2B1 /* MyMapViewController.m */,
+				A503FC3018533A2200823962 /* BlastWelcomeViewController.h */,
+				A503FC3118533A2200823962 /* BlastWelcomeViewController.m */,
 			);
 			path = Blast;
 			sourceTree = "<group>";
@@ -274,12 +320,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				A52A0CBA1852FBD6008DC2B1 /* main.m in Sources */,
+				A503FC2E185339E300823962 /* PGUtility.m in Sources */,
 				A52A0CF118532812008DC2B1 /* SVPulsingAnnotationView.m in Sources */,
-				A52A0CC41852FBD6008DC2B1 /* BlastFirstViewController.m in Sources */,
+				A503FC2C185339E300823962 /* PGRequestConnection.m in Sources */,
+				A503FC2B185339E300823962 /* PGRequest.m in Sources */,
+				A52A0CC41852FBD6008DC2B1 /* BlastMainViewController.m in Sources */,
 				A52A0CBE1852FBD6008DC2B1 /* BlastAppDelegate.m in Sources */,
 				A52A0CF4185328A5008DC2B1 /* SVAnnotation.m in Sources */,
+				A503FC2A185339E300823962 /* PGError.m in Sources */,
 				A52A0CE81852FC2A008DC2B1 /* MyMapViewController.m in Sources */,
 				A52A0CC71852FBD6008DC2B1 /* BlastSecondViewController.m in Sources */,
+				A503FC2D185339E300823962 /* PGURLConnection.m in Sources */,
+				A503FC3218533A2200823962 /* BlastWelcomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
