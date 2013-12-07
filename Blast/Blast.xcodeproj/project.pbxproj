@@ -13,6 +13,8 @@
 		A503FC2D185339E300823962 /* PGURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = A503FC27185339E300823962 /* PGURLConnection.m */; };
 		A503FC2E185339E300823962 /* PGUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = A503FC29185339E300823962 /* PGUtility.m */; };
 		A503FC3218533A2200823962 /* BlastWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A503FC3118533A2200823962 /* BlastWelcomeViewController.m */; };
+		A503FC3D185347F300823962 /* BTCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A503FC3A185347F300823962 /* BTCameraViewController.m */; };
+		A503FC3E185347F300823962 /* BTPostTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A503FC3C185347F300823962 /* BTPostTextViewController.m */; };
 		A52A0CAE1852FBD6008DC2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A52A0CAD1852FBD6008DC2B1 /* Foundation.framework */; };
 		A52A0CB01852FBD6008DC2B1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A52A0CAF1852FBD6008DC2B1 /* CoreGraphics.framework */; };
 		A52A0CB21852FBD6008DC2B1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A52A0CB11852FBD6008DC2B1 /* UIKit.framework */; };
@@ -57,6 +59,10 @@
 		A503FC29185339E300823962 /* PGUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGUtility.m; sourceTree = "<group>"; };
 		A503FC3018533A2200823962 /* BlastWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlastWelcomeViewController.h; sourceTree = "<group>"; };
 		A503FC3118533A2200823962 /* BlastWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlastWelcomeViewController.m; sourceTree = "<group>"; };
+		A503FC39185347F300823962 /* BTCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCameraViewController.h; sourceTree = "<group>"; };
+		A503FC3A185347F300823962 /* BTCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCameraViewController.m; sourceTree = "<group>"; };
+		A503FC3B185347F300823962 /* BTPostTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTPostTextViewController.h; sourceTree = "<group>"; };
+		A503FC3C185347F300823962 /* BTPostTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTPostTextViewController.m; sourceTree = "<group>"; };
 		A52A0CAA1852FBD6008DC2B1 /* Blast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A52A0CAD1852FBD6008DC2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A52A0CAF1852FBD6008DC2B1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -183,6 +189,10 @@
 				A52A0CC31852FBD6008DC2B1 /* BlastMainViewController.m */,
 				A52A0CC51852FBD6008DC2B1 /* BlastSecondViewController.h */,
 				A52A0CC61852FBD6008DC2B1 /* BlastSecondViewController.m */,
+				A503FC39185347F300823962 /* BTCameraViewController.h */,
+				A503FC3A185347F300823962 /* BTCameraViewController.m */,
+				A503FC3B185347F300823962 /* BTPostTextViewController.h */,
+				A503FC3C185347F300823962 /* BTPostTextViewController.m */,
 				A52A0CC81852FBD6008DC2B1 /* Images.xcassets */,
 				A52A0CB41852FBD6008DC2B1 /* Supporting Files */,
 				A52A0CE51852FC2A008DC2B1 /* MyMapViewController.h */,
@@ -323,7 +333,9 @@
 				A503FC2E185339E300823962 /* PGUtility.m in Sources */,
 				A52A0CF118532812008DC2B1 /* SVPulsingAnnotationView.m in Sources */,
 				A503FC2C185339E300823962 /* PGRequestConnection.m in Sources */,
+				A503FC3E185347F300823962 /* BTPostTextViewController.m in Sources */,
 				A503FC2B185339E300823962 /* PGRequest.m in Sources */,
+				A503FC3D185347F300823962 /* BTCameraViewController.m in Sources */,
 				A52A0CC41852FBD6008DC2B1 /* BlastMainViewController.m in Sources */,
 				A52A0CBE1852FBD6008DC2B1 /* BlastAppDelegate.m in Sources */,
 				A52A0CF4185328A5008DC2B1 /* SVAnnotation.m in Sources */,

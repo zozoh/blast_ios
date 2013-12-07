@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface BlastMainViewController : UIViewController
+- (IBAction)startPostBlast:(id)sender;
 
 @end
