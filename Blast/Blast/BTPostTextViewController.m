@@ -7,6 +7,7 @@
 //
 
 #import "BTPostTextViewController.h"
+#import "PGRequest.h"
 
 @interface BTPostTextViewController ()<UITextViewDelegate>
 
@@ -51,7 +52,28 @@
 
 -(void)onSend:(id)sender
 {
-   
+    self.postImage = [UIImage imageNamed:@"123.jpg"];
+    PGRequest *request = [PGRequest blastWithImageData:self.postImage text:self.textView.text userID:@"121"];
+    [request startWithCompletionHandler:^(PGRequestConnection *connection, id result, NSError *error) {
+        if ([result isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dict = (NSDictionary*)result;
+            NSString *_id = [NSString stringWithFormat:@"%@",[dict objectForKey:@"_id"]];
+            NSString *_url = [NSString stringWithFormat:@"%@",[dict objectForKey:@"url"]];
+            
+            NSMutableDictionary *obj = [[NSMutableDictionary alloc]init];
+            [obj setValue:_id forKey:@"_id"];
+            [obj setValue:_url forKey:@"picurl"];
+            [obj setValue:[NSNumber numberWithInt:300] forKey:@"live"];
+            [obj setValue:[NSString stringWithFormat:@"[%f,%f]",113.317290f,23.134844f] forKey:@"location"];
+            [obj setValue:[NSNumber numberWithInt:897] forKey:@"reblaNumber"];
+            [obj setValue:@"hello" forKey:@"content"];
+            PGRequest *req = [PGRequest requestForBlast:obj];
+            [req startWithCompletionHandler:^(PGRequestConnection *connection, id result, NSError *error) {
+                
+            }];
+            
+        }
+    }];
     
 }
 

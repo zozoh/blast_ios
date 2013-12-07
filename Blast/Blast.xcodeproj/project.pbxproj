@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18A00E84185354D000FAB8F4 /* 123.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18A00E83185354D000FAB8F4 /* 123.jpg */; };
+		18A00E8C18539C2D00FAB8F4 /* PGImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A00E8918539C2D00FAB8F4 /* PGImageDownloader.m */; };
+		18A00E8D18539C2D00FAB8F4 /* PGImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A00E8B18539C2D00FAB8F4 /* PGImageLoader.m */; };
 		A503FC2A185339E300823962 /* PGError.m in Sources */ = {isa = PBXBuildFile; fileRef = A503FC21185339E300823962 /* PGError.m */; };
 		A503FC2B185339E300823962 /* PGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A503FC23185339E300823962 /* PGRequest.m */; };
 		A503FC2C185339E300823962 /* PGRequestConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = A503FC25185339E300823962 /* PGRequestConnection.m */; };
@@ -47,6 +50,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18A00E83185354D000FAB8F4 /* 123.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 123.jpg; sourceTree = "<group>"; };
+		18A00E8818539C2D00FAB8F4 /* PGImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGImageDownloader.h; sourceTree = "<group>"; };
+		18A00E8918539C2D00FAB8F4 /* PGImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGImageDownloader.m; sourceTree = "<group>"; };
+		18A00E8A18539C2D00FAB8F4 /* PGImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGImageLoader.h; sourceTree = "<group>"; };
+		18A00E8B18539C2D00FAB8F4 /* PGImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGImageLoader.m; sourceTree = "<group>"; };
 		A503FC20185339E300823962 /* PGError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGError.h; sourceTree = "<group>"; };
 		A503FC21185339E300823962 /* PGError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGError.m; sourceTree = "<group>"; };
 		A503FC22185339E300823962 /* PGRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGRequest.h; sourceTree = "<group>"; };
@@ -129,6 +137,10 @@
 		A503FC2F185339E800823962 /* PGURL */ = {
 			isa = PBXGroup;
 			children = (
+				18A00E8818539C2D00FAB8F4 /* PGImageDownloader.h */,
+				18A00E8918539C2D00FAB8F4 /* PGImageDownloader.m */,
+				18A00E8A18539C2D00FAB8F4 /* PGImageLoader.h */,
+				18A00E8B18539C2D00FAB8F4 /* PGImageLoader.m */,
 				A503FC20185339E300823962 /* PGError.h */,
 				A503FC21185339E300823962 /* PGError.m */,
 				A503FC22185339E300823962 /* PGRequest.h */,
@@ -177,6 +189,7 @@
 		A52A0CB31852FBD6008DC2B1 /* Blast */ = {
 			isa = PBXGroup;
 			children = (
+				18A00E83185354D000FAB8F4 /* 123.jpg */,
 				A503FC1F185339CA00823962 /* Lib */,
 				A52A0CF2185328A5008DC2B1 /* SVAnnotation.h */,
 				A52A0CF3185328A5008DC2B1 /* SVAnnotation.m */,
@@ -311,6 +324,7 @@
 				A52A0CC91852FBD6008DC2B1 /* Images.xcassets in Resources */,
 				A52A0CB81852FBD6008DC2B1 /* InfoPlist.strings in Resources */,
 				A52A0CC11852FBD6008DC2B1 /* Main.storyboard in Resources */,
+				18A00E84185354D000FAB8F4 /* 123.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,9 +350,11 @@
 				A503FC3E185347F300823962 /* BTPostTextViewController.m in Sources */,
 				A503FC2B185339E300823962 /* PGRequest.m in Sources */,
 				A503FC3D185347F300823962 /* BTCameraViewController.m in Sources */,
+				18A00E8C18539C2D00FAB8F4 /* PGImageDownloader.m in Sources */,
 				A52A0CC41852FBD6008DC2B1 /* BlastMainViewController.m in Sources */,
 				A52A0CBE1852FBD6008DC2B1 /* BlastAppDelegate.m in Sources */,
 				A52A0CF4185328A5008DC2B1 /* SVAnnotation.m in Sources */,
+				18A00E8D18539C2D00FAB8F4 /* PGImageLoader.m in Sources */,
 				A503FC2A185339E300823962 /* PGError.m in Sources */,
 				A52A0CE81852FC2A008DC2B1 /* MyMapViewController.m in Sources */,
 				A52A0CC71852FBD6008DC2B1 /* BlastSecondViewController.m in Sources */,

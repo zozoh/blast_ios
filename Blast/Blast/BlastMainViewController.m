@@ -9,6 +9,8 @@
 #import "BlastMainViewController.h"
 #import "BlastSecondViewController.h"
 #import "BTCameraViewController.h"
+#import "BTPostTextViewController.h"
+#import "PGRequest.h"
 
 @interface BlastMainViewController ()
 
@@ -20,7 +22,22 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+
+    
 }
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    PGRequest *request = [PGRequest requestForBlastWithLongitude:116.4154f latitude:39.9372f];
+    [request startWithCompletionHandler:^(PGRequestConnection *connection, id result, NSError *error) {
+        if ([result isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dict = (NSDictionary*)result;
+            NSDictionary *data = (NSDictionary*)[dict objectForKey:@"data"];
+            NSLog(@"%@",data);
+        }
+    }];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -30,6 +47,7 @@
 
 - (IBAction)startPostBlast:(id)sender {
     BTCameraViewController *control = [[BTCameraViewController alloc] init];
+//    BTPostTextViewController *control = [[BTPostTextViewController alloc] init];
     [self.navigationController pushViewController:control animated:NO];
     [self imgSlideInFromLeft: control.view];
 }

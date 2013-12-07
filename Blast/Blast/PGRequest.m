@@ -125,14 +125,42 @@ static NSString *const kPostHTTPMethod = @"POST";
 }
 
 
-+(PGRequest*)requestForMe
++(PGRequest*)requestForBlastWithLongitude:(float)log latitude:(float)lat
 {
     NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
-    [params setObject:PG_USER_ID forKey:@"user_id"];
-    return [[PGRequest alloc]initWithParams:params restMethod:@"/users/" httpMethod:@"GET" ];
+    [params setObject:[NSString stringWithFormat:@"%f",log ] forKey:@"lon"];
+    [params setObject:[NSString stringWithFormat:@"%f",lat ] forKey:@"lat"];
+    [params setObject:@"1" forKey:@"n"];
+    
+    return [[PGRequest alloc]initWithParams:params restMethod:@"/api/blasts.json?" httpMethod:@"GET" ];
 }
 
++(PGRequest*)blastWithImageData:(UIImage *)image text:(NSString *)text userID:(NSString *)userID
+{
+    NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
+    
+    NSMutableDictionary *header = [[NSMutableDictionary alloc]init];
+    [header setObject:@"image/jpeg" forKey:@"Content-Type"];
+    
+    NSMutableData *bodyData = [NSMutableData data];
+//    [bodyData appendData:[NSData dataWithBytes:[str UTF8String] length:strlen([str UTF8String])]];
+    NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+    if (imageData) {
+        [bodyData appendData:[NSData dataWithData:imageData]];
+    }
+    return [[PGRequest alloc]initWithParams:params restMethod:@"/blast/o/write" httpMethod:@"POST" httpHeader:header httpBody:bodyData] ;
+}
 
++(PGRequest*)requestForBlast:(NSDictionary *)dict
+{
+    NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
+    NSMutableDictionary *header = [[NSMutableDictionary alloc]init];
+    [header setObject:@"application/json" forKey:@"Content-Type"];
+    
+    NSData *body = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
+    return [[PGRequest alloc]initWithParams:params restMethod:@"/blast/o/write" httpMethod:@"POST" httpHeader:header httpBody:body] ;
+    
+}
 
 @end
 

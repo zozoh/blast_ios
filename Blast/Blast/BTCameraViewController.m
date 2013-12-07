@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
     if (!self.imageView) {
-        self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 480)];
+        self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 600)];
         self.imageView.center = CGPointMake(160, 240);
         [self.view addSubview:self.imageView];
     }
@@ -51,13 +51,17 @@
 {
     NSArray *mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:sourceType ];
     if ([UIImagePickerController isSourceTypeAvailable:sourceType]&&[mediaTypes count]>0) {
-        NSArray *mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:sourceType ];
+
         UIImagePickerController *picker = [[UIImagePickerController alloc]init];
-        picker.mediaTypes = mediaTypes;
         picker.delegate = self;
-        picker.allowsEditing = YES;
+        picker.allowsEditing = NO;
         picker.sourceType = sourceType;
-        [self presentViewController:picker animated:YES completion:NULL];
+        
+        UIView *overlayView = [[UIView alloc]initWithFrame:picker.view.frame];
+        overlayView.backgroundColor = [UIColor grayColor];
+        [overlayView.layer setOpacity:0.5];
+        
+        [self presentViewController:picker animated:NO completion:NULL];
     }
     else {
         UIAlertView *alert =
@@ -73,6 +77,7 @@
 -(void)onNext:(id)sender
 {
     BTPostTextViewController *ctr = [[BTPostTextViewController alloc]init];
+    ctr.postImage = self.postImage;
     [self.navigationController pushViewController:ctr animated:YES];
     
 }
@@ -81,17 +86,32 @@
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
     self.imageView.image = chosenImage;
     self.postImage = chosenImage;
+    
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    [picker dismissViewControllerAnimated:YES completion:^{
-        [[self navigationController] popViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:NO completion:^{
+        [self performSelector:@selector(pop:) withObject:self afterDelay:0.2f];
     }];
+    
+}
+
+-(void)pop:(id)sender
+{
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.4;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionPush;
+    transition.subtype =kCATransitionFromRight;
+    transition.delegate = self;
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+    
+    [[self navigationController] popViewControllerAnimated:YES];
 }
 
 @end
