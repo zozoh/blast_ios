@@ -7,6 +7,7 @@
 //
 
 #import "BlastItemCell.h"
+#import "CircleDownCounter.h"
 
 @implementation BlastItemCell
 
@@ -23,6 +24,14 @@
 {
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state
+}
+
+- (void)startCountDown:(int) time
+{
+    [CircleDownCounter showCircleDownWithSeconds:time
+                                          onView:self.timeLabel
+                                        withSize:CGSizeMake(66,66)
+                                         andType:CircleDownCounterTypeIntegerDecre];
 }
 
 -(UIImage*)getGrayImage:(UIImage*)sourceImage

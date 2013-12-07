@@ -15,4 +15,6 @@
 @property (strong, nonatomic) CLLocation *lastKnownLocation;
 @property (strong, nonatomic) CLLocationManager* locationManager;
 @property (nonatomic, strong) NSString* uniqueIdentifier;
+
+-(void) fetchNewBlast;
 @end

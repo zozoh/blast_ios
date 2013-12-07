@@ -25,9 +25,17 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
         self.delegate = self;
         self.frame = CGRectMake(0, 0, MRScreenWidth, MRScreenHeight);
+        [self initImageView];
+    }
+    return self;
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self =[super initWithCoder:aDecoder]) {
+        self.delegate = self;
         [self initImageView];
     }
     return self;

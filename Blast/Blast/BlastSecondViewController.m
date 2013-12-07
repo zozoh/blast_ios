@@ -17,6 +17,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.automaticallyAdjustsScrollViewInsets = NO;
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -32,7 +34,8 @@
     self.imagezoomview.delegate = self.imagezoomview;
     self.imagezoomview.delegateForClick = self;
     self.view.alpha = 0;
-    self.imagezoomview.imageView = [[UIImageView alloc] initWithImage:self.image];
+    self.imagezoomview.imageView.image = self.image;
+    self.imagezoomview.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [UIView animateWithDuration:0.5 animations:^{
         self.view.alpha = 1;
     }];
@@ -46,6 +49,7 @@
 
 -(void)MRZoomScrollViewClick:(id)sender
 {
-    [[self navigationController] setNavigationBarHidden:NO animated:YES];
+    BOOL isShow = !self.navigationController.navigationBarHidden;
+    [[self navigationController] setNavigationBarHidden:isShow animated:YES];
 }
 @end

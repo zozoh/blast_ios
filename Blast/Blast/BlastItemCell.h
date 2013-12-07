@@ -11,8 +11,8 @@
 @interface BlastItemCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *receiveTime;
 @property (strong, nonatomic) IBOutlet UILabel *blastCount;
-@property (strong, nonatomic) IBOutlet UILabel *timeLabel;
+@property (strong, nonatomic) IBOutlet UIView *timeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *caption;
 @property (strong, nonatomic) IBOutlet UIImageView *smallpic;
-
+-(void)startCountDown:(int)count;
 @end

@@ -44,18 +44,17 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PTv-2d-FqC">
-                                                    <rect key="frame" x="258" y="10" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c62-aU-f4R">
                                                     <rect key="frame" x="14" y="190" width="42" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M3k-81-IC7">
+                                                    <rect key="frame" x="250" y="162" width="62" height="56"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -63,7 +62,7 @@
                                             <outlet property="caption" destination="c62-aU-f4R" id="59f-FJ-76b"/>
                                             <outlet property="receiveTime" destination="NNC-Tj-Brt" id="9Db-gb-W2B"/>
                                             <outlet property="smallpic" destination="AxB-KN-uSP" id="rj9-H7-tLJ"/>
-                                            <outlet property="timeLabel" destination="PTv-2d-FqC" id="nn5-kr-Fqy"/>
+                                            <outlet property="timeLabel" destination="M3k-81-IC7" id="P1C-NX-DOC"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -124,7 +123,7 @@
         <!--Blast Second View Controller - Second-->
         <scene sceneID="ot8-2e-RuS">
             <objects>
-                <viewController storyboardIdentifier="BlastShow" title="Second" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QUy-BD-bpt" customClass="BlastSecondViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BlastShow" title="Second" wantsFullScreenLayout="YES" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QUy-BD-bpt" customClass="BlastSecondViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0vZ-63-8A9"/>
                         <viewControllerLayoutGuide type="bottom" id="zqL-3J-ekg"/>
@@ -178,6 +177,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="Z7h-1E-pvt"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
