@@ -29,6 +29,11 @@ typedef void (^PGImageLoaderHandler)(UIImage*image,
               imageType:(int)type
       completionHandler:(PGImageLoaderHandler)handler;
 
+-(void)loadImageWithId:(NSString*)id
+             imageType:(int)type
+     completionHandler:(PGImageLoaderHandler)handler;
+
+
 -(void)cancelDownloaderWithURL:(NSString*)url;
 
 @end

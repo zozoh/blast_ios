@@ -55,7 +55,7 @@
 -(void)onSend:(id)sender
 {
     [self startAnimatingPhotoLoadingIndicator];
-    self.postImage = [UIImage imageNamed:@"123.jpg"];
+//    self.postImage = [UIImage imageNamed:@"123.jpg"];
     PGRequest *request = [PGRequest requestForPostImageData:self.postImage];
     [request startWithCompletionHandler:^(PGRequestConnection *connection, id result, NSError *error) {
         if (!error&&[result isKindOfClass:[NSDictionary class]]) {
@@ -69,7 +69,7 @@
             [obj setValue:[NSNumber numberWithInt:300] forKey:@"live"];
             [obj setValue:[NSString stringWithFormat:@"[%f,%f]",113.317290f,23.134844f] forKey:@"location"];
             [obj setValue:[NSNumber numberWithInt:897] forKey:@"reblaNumber"];
-            [obj setValue:@"hello" forKey:@"content"];
+            [obj setValue:self.textView.text forKey:@"content"];
             PGRequest *req = [PGRequest requestForBlast:obj];
             [req startWithCompletionHandler:^(PGRequestConnection *connection, id result, NSError *error) {
                 if (!error && [result isKindOfClass:[NSDictionary class]]) {

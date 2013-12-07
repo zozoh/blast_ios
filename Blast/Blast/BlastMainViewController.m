@@ -33,7 +33,7 @@
         if ([result isKindOfClass:[NSDictionary class]]) {
             NSDictionary *dict = (NSDictionary*)result;
             NSDictionary *data = (NSDictionary*)[dict objectForKey:@"data"];
-            NSLog(@"%@",data);
+            NSLog(@"blast data:%@",data);
         }
     }];
 }
@@ -46,8 +46,8 @@
 }
 
 - (IBAction)startPostBlast:(id)sender {
-//    BTCameraViewController *control = [[BTCameraViewController alloc] init];
-    BTPostTextViewController *control = [[BTPostTextViewController alloc] init];
+    BTCameraViewController *control = [[BTCameraViewController alloc] init];
+//    BTPostTextViewController *control = [[BTPostTextViewController alloc] init];
     [self.navigationController pushViewController:control animated:NO];
     [self imgSlideInFromLeft: control.view];
 }

@@ -8,6 +8,7 @@
 
 #import "PGImageLoader.h"
 #import "PGImageDownloader.h"
+#import "PGUtility.h"
 
 @implementation PGImageLoader
 
@@ -32,6 +33,13 @@
     }
     return loader;
 }
+
+-(void)loadImageWithId:(NSString *)id imageType:(int)type completionHandler:(PGImageLoaderHandler)handler
+{
+    NSString *url = [NSString stringWithFormat:@"%@%@%@%@", PG_URL_PREFIX,PG_BASE_URL, @"/api/photo/",id ];
+    [self loadImageWithURL:url imageType:type completionHandler:handler];
+}
+
 -(void)loadImageWithURL:(NSString *)url completionhandler:(PGImageLoaderHandler)handler
 {
     [self loadImageWithURL:url imageType:0 completionHandler:handler];

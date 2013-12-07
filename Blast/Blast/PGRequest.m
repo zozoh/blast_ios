@@ -132,7 +132,7 @@ static NSString *const kPostHTTPMethod = @"POST";
     [params setObject:[NSString stringWithFormat:@"%f",lat ] forKey:@"lat"];
     [params setObject:@"1" forKey:@"n"];
     
-    return [[PGRequest alloc]initWithParams:params restMethod:@"/api/blasts.json?" httpMethod:@"GET" ];
+    return [[PGRequest alloc]initWithParams:params restMethod:@"/api/blasts" httpMethod:@"GET" ];
 }
 
 +(PGRequest*)requestForPostImageData:(UIImage*)image{

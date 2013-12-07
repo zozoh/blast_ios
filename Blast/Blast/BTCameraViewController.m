@@ -40,13 +40,12 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(onNext:)];
 	[self pickMediaFromSource:UIImagePickerControllerSourceTypeCamera];
     
-//    [[PGImageLoader sharedLoader]loadImageWithURL:@"http://10.10.0.61:8080/api/photo/46b6e47637f8ec0090ddebadcecff49d215be3fa" completionhandler:^(UIImage *image, int imageType, NSError *error) {
-//        if (!error) {
-//            self.imageView.image = image;
-//        }
-//        
-//        
-//    }];
+
+    [[PGImageLoader sharedLoader]loadImageWithId:@"46b6e47637f8ec0090ddebadcecff49d215be3fa" imageType:0 completionHandler:^(UIImage *image, int imageType, NSError *error) {
+        if (!error) {
+            self.imageView.image = image;
+        }
+    }];
     
 }
 
