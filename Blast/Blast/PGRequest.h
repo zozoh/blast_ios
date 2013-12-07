@@ -54,9 +54,7 @@
 
 +(PGRequest*)requestForBlast:(NSDictionary *)dict;
 
-+(PGRequest*)blastWithImageData:(UIImage*)image
-                           text:(NSString*)text
-                         userID:(NSString*)userID;
++(PGRequest*)requestForPostImageData:(UIImage*)image;
 
 @end
 

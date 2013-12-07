@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define PG_BASE_URL @"10.10.0.109:3000"
+#define PG_BASE_URL @"10.10.0.61:8080"
 //#define PG_BASE_URL @"1:5000"
 #define PG_URL_PREFIX @"http://"
 #define PG_USER_ID @"210"

@@ -16,7 +16,7 @@
 NSString *const kApiURLPrefix = @"http://";
 
 
-static const NSTimeInterval kDefaultTimeout = 180.0;
+static const NSTimeInterval kDefaultTimeout = 90.0;
 
 
 typedef enum PGRequestConnectionState{

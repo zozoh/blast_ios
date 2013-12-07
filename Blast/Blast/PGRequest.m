@@ -135,20 +135,19 @@ static NSString *const kPostHTTPMethod = @"POST";
     return [[PGRequest alloc]initWithParams:params restMethod:@"/api/blasts.json?" httpMethod:@"GET" ];
 }
 
-+(PGRequest*)blastWithImageData:(UIImage *)image text:(NSString *)text userID:(NSString *)userID
-{
++(PGRequest*)requestForPostImageData:(UIImage*)image{
     NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
     
     NSMutableDictionary *header = [[NSMutableDictionary alloc]init];
     [header setObject:@"image/jpeg" forKey:@"Content-Type"];
     
     NSMutableData *bodyData = [NSMutableData data];
-//    [bodyData appendData:[NSData dataWithBytes:[str UTF8String] length:strlen([str UTF8String])]];
     NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
     if (imageData) {
         [bodyData appendData:[NSData dataWithData:imageData]];
     }
-    return [[PGRequest alloc]initWithParams:params restMethod:@"/blast/o/write" httpMethod:@"POST" httpHeader:header httpBody:bodyData] ;
+    NSLog(@"%@",bodyData);
+    return [[PGRequest alloc]initWithParams:params restMethod:@"/api/blasts/photo_upload" httpMethod:@"POST" httpHeader:header httpBody:bodyData] ;
 }
 
 +(PGRequest*)requestForBlast:(NSDictionary *)dict
@@ -158,7 +157,7 @@ static NSString *const kPostHTTPMethod = @"POST";
     [header setObject:@"application/json" forKey:@"Content-Type"];
     
     NSData *body = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
-    return [[PGRequest alloc]initWithParams:params restMethod:@"/blast/o/write" httpMethod:@"POST" httpHeader:header httpBody:body] ;
+    return [[PGRequest alloc]initWithParams:params restMethod:@"/api/blasts/new" httpMethod:@"POST" httpHeader:header httpBody:body] ;
     
 }
 
