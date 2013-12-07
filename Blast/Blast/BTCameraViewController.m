@@ -58,7 +58,6 @@
         picker.allowsEditing = YES;
         picker.sourceType = sourceType;
         [self presentViewController:picker animated:YES completion:NULL];
-        
     }
     else {
         UIAlertView *alert =
@@ -69,7 +68,6 @@
                          otherButtonTitles:nil];
         [alert show];
     }
-
 }
 
 -(void)onNext:(id)sender
@@ -91,7 +89,9 @@
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    [picker dismissViewControllerAnimated:YES completion:NULL];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        [[self navigationController] popViewControllerAnimated:YES];
+    }];
 }
 
 @end
