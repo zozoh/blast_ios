@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ZoomScrollViewDelegate;
 
 @interface MRZoomScrollView : UIScrollView <UIScrollViewDelegate>
 {
@@ -15,6 +16,9 @@
 }
 
 @property (nonatomic, retain) UIImageView *imageView;
+@property (nonatomic, assign) id<ZoomScrollViewDelegate> delegateForClick;
+@end
 
-
+@protocol ZoomScrollViewDelegate <NSObject>
+-(void) MRZoomScrollViewClick:(id)sender;
 @end

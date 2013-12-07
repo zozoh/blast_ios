@@ -13,5 +13,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *blastCount;
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *caption;
+@property (strong, nonatomic) IBOutlet UIImageView *smallpic;
 
 @end

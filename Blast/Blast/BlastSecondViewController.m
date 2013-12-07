@@ -30,6 +30,7 @@
 {
     [[self navigationController] setNavigationBarHidden:YES animated:NO];
     self.imagezoomview.delegate = self.imagezoomview;
+    self.imagezoomview.delegateForClick = self;
     self.view.alpha = 0;
     self.imagezoomview.imageView = [[UIImageView alloc] initWithImage:self.image];
     [UIView animateWithDuration:0.5 animations:^{
@@ -41,5 +42,10 @@
 }
 
 - (IBAction)blastAction:(id)sender {
+}
+
+-(void)MRZoomScrollViewClick:(id)sender
+{
+    [[self navigationController] setNavigationBarHidden:NO animated:YES];
 }
 @end

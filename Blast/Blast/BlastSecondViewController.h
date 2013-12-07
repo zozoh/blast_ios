@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MRZoomScrollView.h"
 
-@interface BlastSecondViewController : UIViewController<UIScrollViewDelegate>
+@interface BlastSecondViewController : UIViewController<UIScrollViewDelegate, ZoomScrollViewDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *createDate;
 @property (strong, nonatomic) IBOutlet UILabel *blastCount;
 @property (strong, nonatomic) IBOutlet UILabel *location;

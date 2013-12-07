@@ -66,7 +66,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIViewController* controller = [[self storyboard] instantiateViewControllerWithIdentifier:@"BlastShow"];
+    BlastSecondViewController* controller = [[self storyboard] instantiateViewControllerWithIdentifier:@"BlastShow"];
+    controller.image = [(BlastItemCell*)[tableView cellForRowAtIndexPath:indexPath] smallpic].image;
     [[self navigationController] pushViewController:controller animated:NO];
 }
 

@@ -28,7 +28,6 @@
         
         self.delegate = self;
         self.frame = CGRectMake(0, 0, MRScreenWidth, MRScreenHeight);
-        
         [self initImageView];
     }
     return self;
@@ -48,6 +47,8 @@
                                                                                 action:@selector(handleDoubleTap:)];
     [doubleTapGesture setNumberOfTapsRequired:2];
     [imageView addGestureRecognizer:doubleTapGesture];
+    UITapGestureRecognizer *singleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
+    [imageView addGestureRecognizer:singleTapGesture];
     
     float minimumScale = self.frame.size.width / imageView.frame.size.width;
     [self setMinimumZoomScale:minimumScale];
@@ -62,6 +63,13 @@
     float newScale = self.zoomScale * 1.5;
     CGRect zoomRect = [self zoomRectForScale:newScale withCenter:[gesture locationInView:gesture.view]];
     [self zoomToRect:zoomRect animated:YES];
+}
+
+- (void)singleTap:(UIGestureRecognizer*) gesture
+{
+    if(self.delegateForClick){
+        [self.delegateForClick MRZoomScrollViewClick:self];
+    }
 }
 
 - (CGRect)zoomRectForScale:(float)scale withCenter:(CGPoint)center
