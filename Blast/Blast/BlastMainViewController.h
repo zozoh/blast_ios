@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BlastMainViewController : UIViewController
+@interface BlastMainViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@property (strong, nonatomic) IBOutlet UITableView *contentTable;
 - (IBAction)startPostBlast:(id)sender;
+- (IBAction)showNext:(id)sender;
 
 @end

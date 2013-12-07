@@ -13,6 +13,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) CLLocation *lastKnownLocation;
-@property (strong, nonatomic)
-CLLocationManager* locationManager;
+@property (strong, nonatomic) CLLocationManager* locationManager;
+@property (nonatomic, strong) NSString* uniqueIdentifier;
 @end

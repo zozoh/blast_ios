@@ -15,6 +15,8 @@
 		A503FC3218533A2200823962 /* BlastWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A503FC3118533A2200823962 /* BlastWelcomeViewController.m */; };
 		A503FC3D185347F300823962 /* BTCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A503FC3A185347F300823962 /* BTCameraViewController.m */; };
 		A503FC3E185347F300823962 /* BTPostTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A503FC3C185347F300823962 /* BTPostTextViewController.m */; };
+		A503FC4118534D7500823962 /* BlastItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A503FC4018534D7500823962 /* BlastItemCell.m */; };
+		A503FC44185358D800823962 /* MRZoomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = A503FC43185358D800823962 /* MRZoomScrollView.m */; };
 		A52A0CAE1852FBD6008DC2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A52A0CAD1852FBD6008DC2B1 /* Foundation.framework */; };
 		A52A0CB01852FBD6008DC2B1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A52A0CAF1852FBD6008DC2B1 /* CoreGraphics.framework */; };
 		A52A0CB21852FBD6008DC2B1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A52A0CB11852FBD6008DC2B1 /* UIKit.framework */; };
@@ -63,6 +65,10 @@
 		A503FC3A185347F300823962 /* BTCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCameraViewController.m; sourceTree = "<group>"; };
 		A503FC3B185347F300823962 /* BTPostTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTPostTextViewController.h; sourceTree = "<group>"; };
 		A503FC3C185347F300823962 /* BTPostTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTPostTextViewController.m; sourceTree = "<group>"; };
+		A503FC3F18534D7500823962 /* BlastItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlastItemCell.h; sourceTree = "<group>"; };
+		A503FC4018534D7500823962 /* BlastItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlastItemCell.m; sourceTree = "<group>"; };
+		A503FC42185358D800823962 /* MRZoomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRZoomScrollView.h; sourceTree = "<group>"; };
+		A503FC43185358D800823962 /* MRZoomScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRZoomScrollView.m; sourceTree = "<group>"; };
 		A52A0CAA1852FBD6008DC2B1 /* Blast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A52A0CAD1852FBD6008DC2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A52A0CAF1852FBD6008DC2B1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -177,6 +183,8 @@
 		A52A0CB31852FBD6008DC2B1 /* Blast */ = {
 			isa = PBXGroup;
 			children = (
+				A503FC42185358D800823962 /* MRZoomScrollView.h */,
+				A503FC43185358D800823962 /* MRZoomScrollView.m */,
 				A503FC1F185339CA00823962 /* Lib */,
 				A52A0CF2185328A5008DC2B1 /* SVAnnotation.h */,
 				A52A0CF3185328A5008DC2B1 /* SVAnnotation.m */,
@@ -199,6 +207,8 @@
 				A52A0CE61852FC2A008DC2B1 /* MyMapViewController.m */,
 				A503FC3018533A2200823962 /* BlastWelcomeViewController.h */,
 				A503FC3118533A2200823962 /* BlastWelcomeViewController.m */,
+				A503FC3F18534D7500823962 /* BlastItemCell.h */,
+				A503FC4018534D7500823962 /* BlastItemCell.m */,
 			);
 			path = Blast;
 			sourceTree = "<group>";
@@ -344,6 +354,8 @@
 				A52A0CC71852FBD6008DC2B1 /* BlastSecondViewController.m in Sources */,
 				A503FC2D185339E300823962 /* PGURLConnection.m in Sources */,
 				A503FC3218533A2200823962 /* BlastWelcomeViewController.m in Sources */,
+				A503FC44185358D800823962 /* MRZoomScrollView.m in Sources */,
+				A503FC4118534D7500823962 /* BlastItemCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
