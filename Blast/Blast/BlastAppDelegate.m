@@ -9,9 +9,11 @@
 #import "BlastAppDelegate.h"
 
 @implementation BlastAppDelegate
+BlastAppDelegate* app;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    app = self;
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;

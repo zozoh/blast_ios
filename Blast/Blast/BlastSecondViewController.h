@@ -14,8 +14,14 @@
 @property (strong, nonatomic) IBOutlet UILabel *blastCount;
 @property (strong, nonatomic) IBOutlet UILabel *location;
 @property (strong, nonatomic) IBOutlet MRZoomScrollView *imagezoomview;
+@property (strong, nonatomic) IBOutlet UIView *timeCountDown;
 @property (strong, nonatomic) UIImage* image;
+@property (strong, nonatomic) NSDictionary* currentData;
+@property (strong, nonatomic) IBOutlet UIImageView *headIcon;
+@property (strong, nonatomic) IBOutlet UILabel *posterName;
+@property (strong, nonatomic) IBOutlet UILabel *blastContent;
 - (IBAction)showMapView:(id)sender;
 - (IBAction)blastAction:(id)sender;
+@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *hideGroup;
 
 @end

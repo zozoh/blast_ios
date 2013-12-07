@@ -29,4 +29,5 @@ typedef enum {
 + (CGRect)frameOfCircleViewOfSize:(CGSize)size inView:(UIView *)view;
 + (CircleCounterView *)circleViewInView:(UIView *)view;
 
++ (int)getCountDownFromData:(NSTimeInterval)fromTime;
 @end

@@ -15,6 +15,7 @@
 @property (strong, nonatomic) CLLocation *lastKnownLocation;
 @property (strong, nonatomic) CLLocationManager* locationManager;
 @property (nonatomic, strong) NSString* uniqueIdentifier;
-
--(void) fetchNewBlast;
+@property (nonatomic, strong) NSString* userName;
 @end
+
+extern BlastAppDelegate* app;

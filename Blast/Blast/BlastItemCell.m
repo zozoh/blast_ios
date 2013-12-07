@@ -26,12 +26,26 @@
     // Configure the view for the selected state
 }
 
-- (void)startCountDown:(int) time
+- (void)startCountDown
 {
-    [CircleDownCounter showCircleDownWithSeconds:time
+    if(self.data){
+        long time = [self.data[@"lastModified"] longValue];
+        [CircleDownCounter showCircleDownWithSeconds:[CircleDownCounter getCountDownFromData:time / 1000.f]
                                           onView:self.timeLabel
                                         withSize:CGSizeMake(66,66)
                                          andType:CircleDownCounterTypeIntegerDecre];
+    }
+}
+
+-(void)reset
+{
+    NSDate* date = [NSDate dateWithTimeIntervalSince1970:[self.data[@"lastModified"] longValue] / 1000.0f ];
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    self.receiveTime.text = [df stringFromDate:date];
+    self.blastCount = self.data[@"reblaNumber"];
+    self.caption = self.data[@"content"];
+    // Load Small Pic;
 }
 
 -(UIImage*)getGrayImage:(UIImage*)sourceImage
