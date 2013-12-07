@@ -12,7 +12,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.pausesLocationUpdatesAutomatically = NO;
+    [self.locationManager startMonitoringSignificantLocationChanges];
+
     return YES;
 }
 							
@@ -24,7 +30,21 @@
 
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
+    
+}
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    [self locationUpdate:[locations lastObject]];
+}
 
+- (void)locationUpdate:(CLLocation *)location
+{
+    NSLog(@" *** LocationContrller - LocationUpdate location");
+    self.lastKnownLocation = location;
+    if (location.horizontalAccuracy < 500)
+    {
+        
+    }
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application

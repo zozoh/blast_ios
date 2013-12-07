@@ -488,6 +488,7 @@
 				A52A0CE11852FBD7008DC2B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A52A0CE21852FBD7008DC2B1 /* Build configuration list for PBXNativeTarget "BlastTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +497,7 @@
 				A52A0CE41852FBD7008DC2B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
