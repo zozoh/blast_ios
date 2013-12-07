@@ -22,7 +22,10 @@
 		A52A0CD21852FBD6008DC2B1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A52A0CB11852FBD6008DC2B1 /* UIKit.framework */; };
 		A52A0CDA1852FBD7008DC2B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A52A0CD81852FBD7008DC2B1 /* InfoPlist.strings */; };
 		A52A0CDC1852FBD7008DC2B1 /* BlastTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A0CDB1852FBD7008DC2B1 /* BlastTests.m */; };
-		A52A0CE81852FC2A008DC2B1 /* HelloViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A0CE61852FC2A008DC2B1 /* HelloViewController.m */; };
+		A52A0CE81852FC2A008DC2B1 /* MyMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A0CE61852FC2A008DC2B1 /* MyMapViewController.m */; };
+		A52A0CEB1853150D008DC2B1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A52A0CEA1853150D008DC2B1 /* MapKit.framework */; };
+		A52A0CF118532812008DC2B1 /* SVPulsingAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A0CF018532812008DC2B1 /* SVPulsingAnnotationView.m */; };
+		A52A0CF4185328A5008DC2B1 /* SVAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A0CF3185328A5008DC2B1 /* SVAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,8 +60,13 @@
 		A52A0CD71852FBD7008DC2B1 /* BlastTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BlastTests-Info.plist"; sourceTree = "<group>"; };
 		A52A0CD91852FBD7008DC2B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A52A0CDB1852FBD7008DC2B1 /* BlastTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlastTests.m; sourceTree = "<group>"; };
-		A52A0CE51852FC2A008DC2B1 /* HelloViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloViewController.h; sourceTree = "<group>"; };
-		A52A0CE61852FC2A008DC2B1 /* HelloViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloViewController.m; sourceTree = "<group>"; };
+		A52A0CE51852FC2A008DC2B1 /* MyMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMapViewController.h; sourceTree = "<group>"; };
+		A52A0CE61852FC2A008DC2B1 /* MyMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMapViewController.m; sourceTree = "<group>"; };
+		A52A0CEA1853150D008DC2B1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A52A0CEF18532812008DC2B1 /* SVPulsingAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPulsingAnnotationView.h; sourceTree = "<group>"; };
+		A52A0CF018532812008DC2B1 /* SVPulsingAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVPulsingAnnotationView.m; sourceTree = "<group>"; };
+		A52A0CF2185328A5008DC2B1 /* SVAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVAnnotation.h; sourceTree = "<group>"; };
+		A52A0CF3185328A5008DC2B1 /* SVAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A52A0CEB1853150D008DC2B1 /* MapKit.framework in Frameworks */,
 				A52A0CB01852FBD6008DC2B1 /* CoreGraphics.framework in Frameworks */,
 				A52A0CB21852FBD6008DC2B1 /* UIKit.framework in Frameworks */,
 				A52A0CAE1852FBD6008DC2B1 /* Foundation.framework in Frameworks */,
@@ -107,6 +116,7 @@
 		A52A0CAC1852FBD6008DC2B1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A52A0CEA1853150D008DC2B1 /* MapKit.framework */,
 				A52A0CAD1852FBD6008DC2B1 /* Foundation.framework */,
 				A52A0CAF1852FBD6008DC2B1 /* CoreGraphics.framework */,
 				A52A0CB11852FBD6008DC2B1 /* UIKit.framework */,
@@ -118,6 +128,10 @@
 		A52A0CB31852FBD6008DC2B1 /* Blast */ = {
 			isa = PBXGroup;
 			children = (
+				A52A0CF2185328A5008DC2B1 /* SVAnnotation.h */,
+				A52A0CF3185328A5008DC2B1 /* SVAnnotation.m */,
+				A52A0CEF18532812008DC2B1 /* SVPulsingAnnotationView.h */,
+				A52A0CF018532812008DC2B1 /* SVPulsingAnnotationView.m */,
 				A52A0CBC1852FBD6008DC2B1 /* BlastAppDelegate.h */,
 				A52A0CBD1852FBD6008DC2B1 /* BlastAppDelegate.m */,
 				A52A0CBF1852FBD6008DC2B1 /* Main.storyboard */,
@@ -127,8 +141,8 @@
 				A52A0CC61852FBD6008DC2B1 /* BlastSecondViewController.m */,
 				A52A0CC81852FBD6008DC2B1 /* Images.xcassets */,
 				A52A0CB41852FBD6008DC2B1 /* Supporting Files */,
-				A52A0CE51852FC2A008DC2B1 /* HelloViewController.h */,
-				A52A0CE61852FC2A008DC2B1 /* HelloViewController.m */,
+				A52A0CE51852FC2A008DC2B1 /* MyMapViewController.h */,
+				A52A0CE61852FC2A008DC2B1 /* MyMapViewController.m */,
 			);
 			path = Blast;
 			sourceTree = "<group>";
@@ -260,9 +274,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A52A0CBA1852FBD6008DC2B1 /* main.m in Sources */,
+				A52A0CF118532812008DC2B1 /* SVPulsingAnnotationView.m in Sources */,
 				A52A0CC41852FBD6008DC2B1 /* BlastFirstViewController.m in Sources */,
 				A52A0CBE1852FBD6008DC2B1 /* BlastAppDelegate.m in Sources */,
-				A52A0CE81852FC2A008DC2B1 /* HelloViewController.m in Sources */,
+				A52A0CF4185328A5008DC2B1 /* SVAnnotation.m in Sources */,
+				A52A0CE81852FC2A008DC2B1 /* MyMapViewController.m in Sources */,
 				A52A0CC71852FBD6008DC2B1 /* BlastSecondViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
