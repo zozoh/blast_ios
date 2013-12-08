@@ -94,7 +94,7 @@
             [self moveCenterToLocate:data[@"location"] size:sizeForDisp];
         }else{
         }
-        annotation.size = 20 + [data[@"reblaNumber"] integerValue] / 10;
+        annotation.size = 30 + [data[@"reblaNumber"] integerValue] / 6.0f;
         annotation.delay = 0.5 * i;
         [self.mapView addAnnotation:annotation];
         i++;

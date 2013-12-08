@@ -42,7 +42,10 @@
     self.imagezoomview.imageView.image = self.image;
     CGSize size = self.image.size;
     CGSize outerSize =self.imagezoomview.bounds.size;
-    self.imagezoomview.imageView.frame = CGRectMake(0, 0, outerSize.width, size.height / size.width * outerSize.width);
+    if(size.height > 0 && size.width > 0)
+    {
+        self.imagezoomview.imageView.frame = CGRectMake(0, 0, outerSize.width, size.height / size.width * outerSize.width);
+    }
     
     [UIView animateWithDuration:0.5 animations:^{
         self.view.alpha = 1;
