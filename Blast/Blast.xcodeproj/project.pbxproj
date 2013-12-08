@@ -44,6 +44,7 @@
 		A52A0CEB1853150D008DC2B1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A52A0CEA1853150D008DC2B1 /* MapKit.framework */; };
 		A52A0CF118532812008DC2B1 /* SVPulsingAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A0CF018532812008DC2B1 /* SVPulsingAnnotationView.m */; };
 		A52A0CF4185328A5008DC2B1 /* SVAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A0CF3185328A5008DC2B1 /* SVAnnotation.m */; };
+		A58DE3E018544047002D9EF5 /* big_shell.png in Resources */ = {isa = PBXBuildFile; fileRef = A58DE3DF18544047002D9EF5 /* big_shell.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,7 @@
 		A52A0CF018532812008DC2B1 /* SVPulsingAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVPulsingAnnotationView.m; sourceTree = "<group>"; };
 		A52A0CF2185328A5008DC2B1 /* SVAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVAnnotation.h; sourceTree = "<group>"; };
 		A52A0CF3185328A5008DC2B1 /* SVAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVAnnotation.m; sourceTree = "<group>"; };
+		A58DE3DF18544047002D9EF5 /* big_shell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = big_shell.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +254,7 @@
 				A503FC3B185347F300823962 /* BTPostTextViewController.h */,
 				A503FC3C185347F300823962 /* BTPostTextViewController.m */,
 				A52A0CC81852FBD6008DC2B1 /* Images.xcassets */,
+				A58DE3DF18544047002D9EF5 /* big_shell.png */,
 				A52A0CB41852FBD6008DC2B1 /* Supporting Files */,
 				A52A0CE51852FC2A008DC2B1 /* MyMapViewController.h */,
 				A52A0CE61852FC2A008DC2B1 /* MyMapViewController.m */,
@@ -369,6 +372,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A52A0CC91852FBD6008DC2B1 /* Images.xcassets in Resources */,
+				A58DE3E018544047002D9EF5 /* big_shell.png in Resources */,
 				A52A0CB81852FBD6008DC2B1 /* InfoPlist.strings in Resources */,
 				18A00E931854236D00FAB8F4 /* blastbutton_hover.png in Resources */,
 				A52A0CC11852FBD6008DC2B1 /* Main.storyboard in Resources */,
