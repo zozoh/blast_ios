@@ -87,7 +87,9 @@
 {
     BTPostTextViewController *ctr = [[BTPostTextViewController alloc]init];
     ctr.postImage = self.postImage;
+    
     [self.navigationController pushViewController:ctr animated:YES];
+//    [self.navigationController popToViewController:self animated:NO];
     
 }
 

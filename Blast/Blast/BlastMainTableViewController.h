@@ -10,4 +10,6 @@
 
 @interface BlastMainTableViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate>
 
+-(void)appendNewSelfPost:(NSDictionary*) data;
+
 @end
