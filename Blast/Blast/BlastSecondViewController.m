@@ -9,6 +9,8 @@
 #import "BlastSecondViewController.h"
 #import "CircleDownCounter.h"
 #import "MyMapViewController.h"
+#import "PGRequest.h"
+#import "BlastAppDelegate.h"
 
 @interface BlastSecondViewController ()
 
@@ -48,8 +50,8 @@
         v.hidden = YES;
     }
     if(self.currentData){
-        long time = [self.currentData[@"lastModified"] longValue];
-        [CircleDownCounter showCircleDownWithSeconds:[CircleDownCounter getCountDownFromData:time / 1000.f]
+        NSTimeInterval time = [self.currentData[@"CountDown"] timeIntervalSince1970];
+        [CircleDownCounter showCircleDownWithSeconds:[CircleDownCounter getCountDownFromData:time]
                                                   onView:self.timeCountDown
                                                 withSize:CGSizeMake(66,66)
                                                  andType:CircleDownCounterTypeIntegerDecre];
@@ -58,12 +60,12 @@
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
         [df setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
         self.createDate.text = [df stringFromDate:date];
-        self.blastCount = self.currentData[@"reblaNumber"];
-        self.blastContent = self.currentData[@"content"];
-        self.posterName = self.currentData[@"owner"];
+        self.blastCount.text = [self.currentData[@"reblaNumber"] stringValue];
+        self.blastContent.text = self.currentData[@"content"];
+        self.posterName.text = self.currentData[@"owner"];
     }
     
-    self.title = @"Detail Pic";
+    self.title = self.currentData[@"content"];
 }
 
 - (IBAction)showMapView:(id)sender {
@@ -73,6 +75,17 @@
 }
 
 - (IBAction)blastAction:(id)sender {
+    NSMutableDictionary* dict = [NSMutableDictionary dictionary];
+    [dict setObject:self.currentData[@"_id"] forKey:@"bid"];
+    [dict setObject:app.userName forKey:@"me"];
+    [dict setObject:[NSString stringWithFormat:@"%f", app.lastKnownLocation.coordinate.longitude] forKey:@"lon"];
+    [dict setObject:[NSString stringWithFormat:@"%f", app.lastKnownLocation.coordinate.latitude] forKey:@"lat"];
+    PGRequest* req = [PGRequest requestForReBlast:dict];
+    [req startWithCompletionHandler:^(PGRequestConnection *connection, id result, NSError *error) {
+        if(error){
+            NSLog(@"Send Fail");
+        }
+    }];
 }
 
 - (IBAction)back:(id)sender{

@@ -36,24 +36,24 @@
 {
     NSString* userName = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
     self.isDownloading = false;
-    /*
     if(userName == nil){
         __weak BlastWelcomeViewController* sellf = self;
-        PGRequest* request = [[PGRequest alloc] init];
+        self.isDownloading = true;
+        PGRequest* request = [PGRequest requestForUserName: app.uniqueIdentifier];
         [request startWithCompletionHandler:^(PGRequestConnection *connection, id result, NSError *error) {
-            NSDictionary* resultJson = [PGUtility simpleJSONDecode:result error:&error];
-            if(error){
-                app.userName = resultJson[@"userName"];
+            NSDictionary* resultJson = result;
+            if(!error){
+                app.userName = resultJson[@"data"];
                 [[NSUserDefaults standardUserDefaults] setObject:app.userName forKey:@"username"];
                 [[NSUserDefaults standardUserDefaults] synchronize];
-                sellf.isDownloading = true;
+                sellf.isDownloading = false;
                 [NSTimer cancelPreviousPerformRequestsWithTarget:self selector:@selector(nextPage) object:nil];
                 [sellf nextPage];
             }
         }];
     }else{
         app.userName = userName;
-    }*/
+    }
     [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(nextPage) userInfo:nil repeats:false];
 }
 

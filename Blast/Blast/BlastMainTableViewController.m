@@ -11,11 +11,12 @@
 #import "BlastItemCell.h"
 #import "PGRequest.h"
 #import "PGUtility.h"
+#import "BlastAppDelegate.h"
 
 @interface BlastMainTableViewController ()
 @property (nonatomic,strong) NSMutableArray* blastList;
 @property (nonatomic,strong) UIRefreshControl *refresh;
-
+@property (nonatomic,strong) NSString* lastBid;
 @end
 
 @implementation BlastMainTableViewController
@@ -74,29 +75,33 @@
 {
     float gap = 1;
     //If data Change; Add to new;
-    PGRequest* request = [[PGRequest alloc] init];
-    [request startWithCompletionHandler:^(PGRequestConnection *connection, id result, NSError *error) {
-        if(error){
-            [self networkProblem];
-            return;
-        }
-        NSDictionary* jsonData = [PGUtility simpleJSONDecode:result error:&error];
-        
+    __weak BlastMainTableViewController* sellf = self;
+    [app fetchLastestBlast:self.lastBid block:^(id result) {
         //Check current is top?
-        NSIndexPath *firstVisibleIndexPath = [[self.tableView indexPathsForVisibleRows] objectAtIndex:0];
-        if(firstVisibleIndexPath.row == 0){
-            [NSTimer cancelPreviousPerformRequestsWithTarget:self selector:@selector(onTimer) object:nil];
-            [NSTimer scheduledTimerWithTimeInterval:gap target:self selector:@selector(onTimer) userInfo:nil repeats:NO];
-        };
+        if([sellf.blastList count] > 0){
+            NSIndexPath *firstVisibleIndexPath = [[sellf.tableView indexPathsForVisibleRows] objectAtIndex:0];
+            if(firstVisibleIndexPath.row == 0){
+                [NSTimer cancelPreviousPerformRequestsWithTarget:sellf selector:@selector(onTimer) object:nil];
+                [NSTimer scheduledTimerWithTimeInterval:gap target:sellf selector:@selector(onTimer) userInfo:nil repeats:NO];
+            };
+        }
         
-        NSMutableArray* all = [jsonData[@"data"] mutableCopy];
+        NSMutableArray* all = [NSMutableArray array];
+        for (NSDictionary* data in result) {
+            NSDictionary* dataAdd = [data mutableCopy];
+            [dataAdd setValue:[NSDate date] forKey:@"CountDown"];
+            [all addObject:dataAdd];
+        }
+        
         if(all != nil && [all count] > 0)
         {
-            [all addObjectsFromArray:self.blastList];
-            self.blastList = all;
-            [[self tableView] reloadData];
+            sellf.lastBid = [all firstObject][@"_id"];
+            [all addObjectsFromArray:sellf.blastList];
+            sellf.blastList = all;
+            [[sellf tableView] reloadData];
         }
-        [self performSelector:@selector(stopRefresh) withObject:nil afterDelay:2.5];
+        
+        [sellf performSelector:@selector(stopRefresh) withObject:nil afterDelay:2.5];
     }];
 }
 
@@ -109,8 +114,8 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // return [self.blastList count];
-    return 10;
+    return [self.blastList count];
+    // return 10;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -128,13 +133,17 @@
 {
     BlastSecondViewController* controller = [[self storyboard] instantiateViewControllerWithIdentifier:@"BlastShow"];
     controller.image = [(BlastItemCell*)[tableView cellForRowAtIndexPath:indexPath] smallpic].image;
+    controller.currentData = [(BlastItemCell*)[tableView cellForRowAtIndexPath:indexPath] data];
     [[self navigationController] pushViewController:controller animated:NO];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    NSIndexPath *firstVisibleIndexPath = [[self.tableView indexPathsForVisibleRows] objectAtIndex:0];
-    if(firstVisibleIndexPath.row == 0){
-        [self fetchNewBlast];
+    if([self.blastList count] > 0){
+        NSIndexPath *firstVisibleIndexPath = [[self.tableView indexPathsForVisibleRows] objectAtIndex:0];
+        if(firstVisibleIndexPath.row == 0){
+            [self fetchNewBlast];
+            
+        }
     }
 }
 

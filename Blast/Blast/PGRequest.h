@@ -51,11 +51,14 @@
 
 +(PGRequest*)requestForBlastWithLongitude:(float)log
                                  latitude:(float)lat;
++(PGRequest*)requestForBlastWithLongitude:(float)log latitude:(float)lat bid:(id)bid;
 
 +(PGRequest*)requestForBlast:(NSDictionary *)dict;
++(PGRequest*)requestForReBlast:(NSDictionary *)dict;
 
 +(PGRequest*)requestForPostImageData:(UIImage*)image;
-
++(PGRequest*)requestForBlastGraph:(NSDictionary *)dict;
++(PGRequest*)requestForUserName:(NSString*)uuid;
 @end
 
 

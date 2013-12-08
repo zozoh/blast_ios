@@ -123,14 +123,20 @@ static NSString *const kPostHTTPMethod = @"POST";
     NSString *query = [pairs componentsJoinedByString:@"&"];
     return [NSString stringWithFormat:@"%@%@%@",baseUrl,queryPrefix,query];
 }
-
-
 +(PGRequest*)requestForBlastWithLongitude:(float)log latitude:(float)lat
+{
+    return [PGRequest requestForBlastWithLongitude:log latitude:lat bid:nil];
+}
+
++(PGRequest*)requestForBlastWithLongitude:(float)log latitude:(float)lat bid:(id)bid
 {
     NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
     [params setObject:[NSString stringWithFormat:@"%f",log ] forKey:@"lon"];
     [params setObject:[NSString stringWithFormat:@"%f",lat ] forKey:@"lat"];
-    [params setObject:@"1" forKey:@"n"];
+    [params setObject:@"10" forKey:@"n"];
+    if(bid){
+        [params setObject:bid forKey:@"bid"];
+    }
     
     return [[PGRequest alloc]initWithParams:params restMethod:@"/api/blasts" httpMethod:@"GET" ];
 }
@@ -160,6 +166,40 @@ static NSString *const kPostHTTPMethod = @"POST";
     return [[PGRequest alloc]initWithParams:params restMethod:@"/api/blasts/new" httpMethod:@"POST" httpHeader:header httpBody:body] ;
     
 }
+
++(PGRequest*)requestForBlastGraph:(NSDictionary *)dict
+{
+    NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
+    NSMutableDictionary *header = [[NSMutableDictionary alloc]init];
+    [header setObject:@"application/json" forKey:@"Content-Type"];
+    NSData *body = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
+    return [[PGRequest alloc]initWithParams:params restMethod:@"/api/blasts/graph" httpMethod:@"POST" httpHeader:header httpBody:body] ;
+}
+
+
+
++(PGRequest*)requestForReBlast:(NSDictionary *)dict
+{
+    NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
+    NSMutableDictionary *header = [[NSMutableDictionary alloc]init];
+    [header setObject:@"application/json" forKey:@"Content-Type"];
+    
+    NSData *body = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
+    return [[PGRequest alloc]initWithParams:params restMethod:@"/api/blasts/reblast" httpMethod:@"POST" httpHeader:header httpBody:body] ;
+    
+}
+
++(PGRequest*)requestForUserName:(NSString*)uuid
+{
+    NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
+    NSMutableDictionary *header = [[NSMutableDictionary alloc]init];
+    [header setObject:@"application/json" forKey:@"Content-Type"];
+    
+    NSData *body = [NSJSONSerialization dataWithJSONObject:@{@"uid": uuid} options:0 error:nil];
+    return [[PGRequest alloc]initWithParams:params restMethod:@"/api/signup" httpMethod:@"POST" httpHeader:header httpBody:body] ;
+    
+}
+
 
 @end
 

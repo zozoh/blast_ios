@@ -9,6 +9,8 @@
 #import "MyMapViewController.h"
 #import "SVPulsingAnnotationView.h"
 #import "SVAnnotation.h"
+#import "PGRequest.h"
+#import "BlastAppDelegate.h"
 
 @interface MyMapViewController ()
 
@@ -31,11 +33,33 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)loadBlastGraph:(id)bid
+{
+    NSDictionary* dict = @{@"bid": bid};
+    PGRequest* req = [PGRequest requestForBlastGraph:dict];
+    [req startWithCompletionHandler:^(PGRequestConnection *connection, id result, NSError *error) {
+        NSArray* datalist = result[@"data"];
+        
+        CLLocationCoordinate2D coordinate;
+        coordinate.latitude = 23.134844f;
+        coordinate.longitude = 113.317290f;
+        
+        MKCoordinateRegion region;
+        region.span.latitudeDelta = 10;
+        region.span.longitudeDelta = 10;
+        region.center = coordinate;
+
+        [self.mapView setRegion:region animated:YES];
+        // 设置地图显示的类型及根据范围进行显示
+        [self.mapView regionThatFits:region];
+    }];
+}
+
 -(void)viewDidAppear:(BOOL)animated
 {
     CLLocationCoordinate2D coordinate;
-    coordinate.latitude = 23.134844f;
-    coordinate.longitude = 113.317290f;
+    coordinate.latitude = app.lastKnownLocation.coordinate.latitude;
+    coordinate.longitude = app.lastKnownLocation.coordinate.longitude;
 
     MKCoordinateRegion region;
     region.span.latitudeDelta = 10;

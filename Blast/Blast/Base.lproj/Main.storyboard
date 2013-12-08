@@ -324,7 +324,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="226"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Quinn_Square_0" translatesAutoresizingMaskIntoConstraints="NO" id="AxB-KN-uSP">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AxB-KN-uSP">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="226"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </imageView>
@@ -376,7 +376,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Quinn_Square_0" width="60" height="60"/>
         <image name="baricon-03" width="22" height="22"/>
         <image name="baricon-04" width="22" height="22"/>
         <image name="baricon-06" width="22" height="22"/>

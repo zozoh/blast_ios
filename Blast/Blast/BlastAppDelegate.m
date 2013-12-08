@@ -7,6 +7,7 @@
 //
 
 #import "BlastAppDelegate.h"
+#import "PGRequest.h"
 
 @implementation BlastAppDelegate
 BlastAppDelegate* app;
@@ -14,6 +15,7 @@ BlastAppDelegate* app;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     app = self;
+    self.uniqueIdentifier = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -46,6 +48,18 @@ BlastAppDelegate* app;
     {
         
     }
+}
+
+- (void)fetchLastestBlast:(id)lastid block:(FetchResult)block{
+    PGRequest *request = [PGRequest requestForBlastWithLongitude:app.lastKnownLocation.coordinate.longitude latitude:app.lastKnownLocation.coordinate.latitude bid:lastid];
+    [request startWithCompletionHandler:^(PGRequestConnection *connection, id result, NSError *error) {
+        if ([result isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dict = (NSDictionary*)result;
+            __block NSArray *data = (NSArray*)[dict objectForKey:@"data"];
+            block(data);
+        }
+    }];
+
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application

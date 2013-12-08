@@ -104,7 +104,7 @@ static CircleDownCounter *sharedDownCounter = nil;
 }
 
 + (int)getCountDownFromData:(NSTimeInterval) fromDateTime{
-    return [[NSDate date] timeIntervalSince1970] - fromDateTime;
+    return fromDateTime - [[NSDate date] timeIntervalSince1970] + 300;
 }
 
 #pragma mark - CircleCounterViewDelegate

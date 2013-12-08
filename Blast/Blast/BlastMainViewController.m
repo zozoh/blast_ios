@@ -19,6 +19,9 @@
     [super viewDidLoad];
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+}
 
 - (void)didReceiveMemoryWarning
 {

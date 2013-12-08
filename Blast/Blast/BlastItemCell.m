@@ -8,6 +8,7 @@
 
 #import "BlastItemCell.h"
 #import "CircleDownCounter.h"
+#import "PGImageLoader.h"
 
 @implementation BlastItemCell
 
@@ -29,8 +30,8 @@
 - (void)startCountDown
 {
     if(self.data){
-        long time = [self.data[@"lastModified"] longValue];
-        [CircleDownCounter showCircleDownWithSeconds:[CircleDownCounter getCountDownFromData:time / 1000.f]
+        NSTimeInterval time = [self.data[@"CountDown"] timeIntervalSince1970];
+        [CircleDownCounter showCircleDownWithSeconds:[CircleDownCounter getCountDownFromData:time]
                                           onView:self.timeLabel
                                         withSize:CGSizeMake(66,66)
                                          andType:CircleDownCounterTypeIntegerDecre];
@@ -43,9 +44,15 @@
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
     self.receiveTime.text = [df stringFromDate:date];
-    self.blastCount = self.data[@"reblaNumber"];
-    self.caption = self.data[@"content"];
+    self.blastCount.text = [self.data[@"reblaNumber"] stringValue];
+    self.caption.text = self.data[@"content"];
     // Load Small Pic;
+    __weak BlastItemCell* selff = self;
+    [[PGImageLoader sharedLoader]loadImageWithId:self.data[@"picture"] imageType:0 completionHandler:^(UIImage *image, int imageType, NSError *error) {
+        if (!error) {
+            selff.smallpic.image = image;
+        }
+    }];
 }
 
 -(UIImage*)getGrayImage:(UIImage*)sourceImage
