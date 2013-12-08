@@ -71,6 +71,12 @@
     
 }
 
+-(void)appendNewSelfPost:(NSDictionary*) data
+{
+    [self.blastList insertObject:data atIndex:0];
+    [[self tableView] reloadData];
+}
+
 -(void)fetchNewBlast
 {
     float gap = 1;
@@ -89,8 +95,16 @@
         NSMutableArray* all = [NSMutableArray array];
         for (NSDictionary* data in result) {
             NSDictionary* dataAdd = [data mutableCopy];
-            [dataAdd setValue:[NSDate date] forKey:@"CountDown"];
-            [all addObject:dataAdd];
+            int val =  (arc4random() % 30);
+            [dataAdd setValue:[NSDate dateWithTimeIntervalSinceNow: - val] forKey:@"CountDown"];
+            BOOL isSame = false;
+            for(NSDictionary* item in sellf.blastList){
+                if([dataAdd[@"_id"] isEqualToString:item[@"_id"]]){
+                    isSame = true;
+                }
+            }
+            if(!isSame)
+                [all addObject:dataAdd];
         }
         
         if(all != nil && [all count] > 0)

@@ -81,6 +81,7 @@
 {
     int i = 0;
     int total = (int)[dataList[@"total"] integerValue];
+    int sizeForDisp = (int)[dataList[@"size"] integerValue];
     for (NSDictionary* data in dataList[@"data"]){
         CLLocationCoordinate2D coordinate;
         coordinate.latitude = [data[@"location"][1] floatValue];
@@ -91,7 +92,7 @@
             annotation.title = [data[@"reblaNumber"] stringValue];
             annotation.pointSize =  20;
         }else{
-            [self moveCenterToLocate:data[@"location"] size:3];
+            [self moveCenterToLocate:data[@"location"] size:sizeForDisp];
         }
         annotation.size = 20 + [data[@"reblaNumber"] integerValue] / 10;
         annotation.delay = 0.5 * i;

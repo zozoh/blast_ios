@@ -9,6 +9,8 @@
 #import "BlastItemCell.h"
 #import "CircleDownCounter.h"
 #import "PGImageLoader.h"
+#import "BlastAppDelegate.h"
+#import "PGRequest.h"
 
 @implementation BlastItemCell
 
@@ -75,5 +77,21 @@
     return grayImage;
 }
 
+-(void)clickToBlast
+{
+    NSMutableDictionary* dict = [NSMutableDictionary dictionary];
+    [dict setObject:self.data[@"_id"] forKey:@"bid"];
+    [dict setObject:app.userName forKey:@"me"];
+    [dict setObject:[NSString stringWithFormat:@"%f", app.lastKnownLocation.coordinate.longitude] forKey:@"lon"];
+    [dict setObject:[NSString stringWithFormat:@"%f", app.lastKnownLocation.coordinate.latitude] forKey:@"lat"];
+    PGRequest* req = [PGRequest requestForReBlast:dict];
+    [req startWithCompletionHandler:^(PGRequestConnection *connection, id result, NSError *error) {
+        if(error){
+            NSLog(@"Send Fail");
+        }
+        
+    }];
+
+}
 
 @end

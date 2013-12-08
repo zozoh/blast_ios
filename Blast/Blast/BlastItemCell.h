@@ -19,4 +19,5 @@
 //@property (strong,nonatomic) IBOutlet UIButton *
 -(void)startCountDown;
 -(void)reset;
+-(void)clickToBlast;
 @end
