@@ -14,8 +14,9 @@
 @property (strong, nonatomic) IBOutlet UIView *timeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *caption;
 @property (strong, nonatomic) IBOutlet UIImageView *smallpic;
+@property (strong, nonatomic) IBOutlet UIButton *blastBtn;
 @property (strong, nonatomic) NSDictionary* data;
-
+//@property (strong,nonatomic) IBOutlet UIButton *
 -(void)startCountDown;
 -(void)reset;
 @end
