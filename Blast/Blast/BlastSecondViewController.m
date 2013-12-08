@@ -35,6 +35,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    self.imagezoomview.imageView.contentMode = UIViewContentModeScaleAspectFill;
     self.imagezoomview.delegate = self.imagezoomview;
     self.imagezoomview.delegateForClick = self;
     self.view.alpha = 0;
@@ -42,7 +43,6 @@
     CGSize size = self.image.size;
     CGSize outerSize =self.imagezoomview.bounds.size;
     self.imagezoomview.imageView.frame = CGRectMake(0, 0, outerSize.width, size.height / size.width * outerSize.width);
-    self.imagezoomview.imageView.contentMode = UIViewContentModeScaleAspectFill;
     
     [UIView animateWithDuration:0.5 animations:^{
         self.view.alpha = 1;
