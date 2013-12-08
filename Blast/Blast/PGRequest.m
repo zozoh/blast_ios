@@ -158,7 +158,6 @@ static NSString *const kPostHTTPMethod = @"POST";
     if (imageData) {
         [bodyData appendData:[NSData dataWithData:imageData]];
     }
-    NSLog(@"%@",bodyData);
     return [[PGRequest alloc]initWithParams:params restMethod:@"/api/blasts/photo_upload" httpMethod:@"POST" httpHeader:header httpBody:bodyData] ;
 }
 

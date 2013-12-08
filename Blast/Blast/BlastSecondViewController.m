@@ -42,7 +42,8 @@
     CGSize size = self.image.size;
     CGSize outerSize =self.imagezoomview.bounds.size;
     self.imagezoomview.imageView.frame = CGRectMake(0, 0, outerSize.width, size.height / size.width * outerSize.width);
-    self.imagezoomview.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.imagezoomview.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    
     [UIView animateWithDuration:0.5 animations:^{
         self.view.alpha = 1;
     }];
@@ -56,8 +57,8 @@
                                                   onView:self.timeCountDown
                                                 withSize:CGSizeMake(66,66)
                                                  andType:CircleDownCounterTypeIntegerDecre];
-        
-        NSDate* date = [NSDate dateWithTimeIntervalSince1970:[self.currentData[@"createTime"] longValue] / 1000.0f ];
+        float time2 = [self.currentData[@"createTime"] floatValue] / 1000.0f;
+        NSDate* date = [NSDate dateWithTimeIntervalSince1970: time2];
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
         [df setDateFormat:@"MM-dd"];
         self.createDate.text = [df stringFromDate:date];
@@ -93,6 +94,7 @@
         if(error){
             NSLog(@"Send Fail");
         }
+        [self back:nil];
     }];
 }
 

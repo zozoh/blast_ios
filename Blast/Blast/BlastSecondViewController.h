@@ -20,6 +20,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *headIcon;
 @property (strong, nonatomic) IBOutlet UILabel *posterName;
 @property (strong, nonatomic) IBOutlet UILabel *blastContent;
+@property (strong, nonatomic) UIImage* smallImg;
 - (IBAction)showMapView:(id)sender;
 - (IBAction)blastAction:(id)sender;
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *hideGroup;

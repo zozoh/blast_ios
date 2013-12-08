@@ -16,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *smallpic;
 @property (strong, nonatomic) IBOutlet UIButton *blastBtn;
 @property (strong, nonatomic) NSDictionary* data;
+@property (strong, nonatomic) UIImage* smallImg;
 //@property (strong,nonatomic) IBOutlet UIButton *
 -(void)startCountDown;
 -(void)reset;

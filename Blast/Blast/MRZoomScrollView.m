@@ -43,8 +43,7 @@
 
 - (void)initImageView
 {
-    imageView = [[UIImageView alloc]init];
-    
+    imageView = [[UIImageView alloc] init];
     // The imageView can be zoomed largest size
     imageView.frame = CGRectMake(0, 0, MRScreenWidth * 2.5, MRScreenHeight * 2.5);
     imageView.userInteractionEnabled = YES;

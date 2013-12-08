@@ -91,8 +91,8 @@
         if(i == 0){
             annotation.title = [data[@"reblaNumber"] stringValue];
             annotation.pointSize =  20;
-        }else{
             [self moveCenterToLocate:data[@"location"] size:sizeForDisp];
+        }else{
         }
         annotation.size = 20 + [data[@"reblaNumber"] integerValue] / 10;
         annotation.delay = 0.5 * i;

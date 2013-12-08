@@ -42,17 +42,21 @@
 
 -(void)reset
 {
-    NSDate* date = [NSDate dateWithTimeIntervalSince1970:[self.data[@"lastModified"] longValue] / 1000.0f ];
+    NSNumber* lastTime = self.data[@"lastModified"];
+    float time = ([lastTime floatValue] / 1000.f);
+    NSDate* date = [NSDate dateWithTimeIntervalSince1970: time];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    [df setDateFormat:@"yyyy-MM-dd hh:mm"];
     self.receiveTime.text = [df stringFromDate:date];
     self.blastCount.text = [self.data[@"reblaNumber"] stringValue];
     self.caption.text = self.data[@"content"];
     // Load Small Pic;
     __weak BlastItemCell* selff = self;
+    selff.smallpic.image = nil;
     [[PGImageLoader sharedLoader]loadImageWithId:self.data[@"picture"] imageType:0 completionHandler:^(UIImage *image, int imageType, NSError *error) {
         if (!error) {
             selff.smallpic.image = image;
+            selff.smallImg = image;
         }
     }];
 }

@@ -9,6 +9,7 @@
 #import "BTPostTextViewController.h"
 #import "PGRequest.h"
 #import "BlastMainTableViewController.h"
+#import "BlastMainViewController.h"
 
 @interface BTPostTextViewController ()<UITextViewDelegate>
 
@@ -105,13 +106,17 @@
                 if (!error && [result isKindOfClass:[NSDictionary class]]) {
                     [self stopAnimatingPhotoLoadingIndicator];
                     for (UIViewController *ctr in self.navigationController.viewControllers) {
-                        if ([ctr isKindOfClass:[BlastMainTableViewController class]]) {
-                            BlastMainTableViewController *controller = (BlastMainTableViewController *)ctr;
-                            [controller appendNewSelfPost:obj];
+                        if ([ctr isKindOfClass:[BlastMainViewController class]]) {
+                            for(UIViewController* subVIew in [ctr childViewControllers]){
+                                if([subVIew isKindOfClass:[BlastMainTableViewController class]]){
+                                    BlastMainTableViewController *controller = (BlastMainTableViewController *)subVIew;
+                                    [controller appendNewSelfPost:result[@"data"]];
+                                }
+                            }
                             
                         }
-                        [self.navigationController popToViewController:self animated:YES];
                     }
+                    [self.navigationController popToRootViewControllerAnimated:YES];
                     NSLog(@"%@",result);
                 }
                 else
