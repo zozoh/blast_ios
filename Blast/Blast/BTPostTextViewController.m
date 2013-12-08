@@ -7,9 +7,12 @@
 //
 
 #import "BTPostTextViewController.h"
+#import "PGRequest.h"
 
 @interface BTPostTextViewController ()<UITextViewDelegate>
 
+@property (nonatomic,strong)UIView *activityIndicatorView;
+@property (nonatomic,strong)UIActivityIndicatorView *activityIndicator;
 @end
 
 @implementation BTPostTextViewController
@@ -51,7 +54,40 @@
 
 -(void)onSend:(id)sender
 {
-   
+    [self startAnimatingPhotoLoadingIndicator];
+//    self.postImage = [UIImage imageNamed:@"123.jpg"];
+    PGRequest *request = [PGRequest requestForPostImageData:self.postImage];
+    [request startWithCompletionHandler:^(PGRequestConnection *connection, id result, NSError *error) {
+        if (!error&&[result isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dict = (NSDictionary*)[(NSDictionary*)result objectForKey:@"data"];
+            NSString *_id = [NSString stringWithFormat:@"%@",[dict objectForKey:@"_id"]];
+            NSLog(@"id:%@",_id);
+           
+            NSLog(@"%@",dict);
+            NSMutableDictionary *obj = [[NSMutableDictionary alloc]init];
+            [obj setValue:_id forKey:@"picture"];
+            [obj setValue:[NSNumber numberWithInt:300] forKey:@"live"];
+            [obj setValue:[NSString stringWithFormat:@"[%f,%f]",113.317290f,23.134844f] forKey:@"location"];
+            [obj setValue:[NSNumber numberWithInt:897] forKey:@"reblaNumber"];
+            [obj setValue:self.textView.text forKey:@"content"];
+            PGRequest *req = [PGRequest requestForBlast:obj];
+            [req startWithCompletionHandler:^(PGRequestConnection *connection, id result, NSError *error) {
+                if (!error && [result isKindOfClass:[NSDictionary class]]) {
+                    [self stopAnimatingPhotoLoadingIndicator];
+                    NSLog(@"%@",result);
+                }
+                else
+                {
+                    [self stopAnimatingPhotoLoadingIndicator];
+                }
+            }];
+            
+        }
+        else
+        {
+            [self stopAnimatingPhotoLoadingIndicator];
+        }
+    }];
     
 }
 
@@ -60,6 +96,37 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)startAnimatingPhotoLoadingIndicator
+{
+    CGRect cellBounds = self.view.bounds;
+    if (!self.activityIndicatorView) {
+        self.activityIndicatorView = [[UIView alloc]initWithFrame:self.view.bounds];
+        self.activityIndicatorView.alpha = 0.2;
+        self.activityIndicatorView.backgroundColor = [UIColor grayColor];
+        [self.view addSubview:self.activityIndicatorView];
+        
+        self.activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        self.activityIndicator.hidesWhenStopped = YES;
+
+        self.activityIndicator.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleBottomMargin;
+        [self.activityIndicatorView addSubview:self.activityIndicator];
+        
+
+        
+    }
+    self.activityIndicatorView.hidden = NO;
+    self.activityIndicator.center = CGPointMake(CGRectGetMidX(cellBounds), CGRectGetMidY(cellBounds)*0.7);
+    [self.activityIndicator startAnimating];
+}
+
+-(void)stopAnimatingPhotoLoadingIndicator{
+    if (self.activityIndicatorView) {
+        [self.activityIndicator stopAnimating];
+        [self.activityIndicatorView setHidden:YES];
+    }
+}
+
 
 #pragma mark TextViewDelegate
 

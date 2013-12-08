@@ -20,7 +20,6 @@ BlastAppDelegate* app;
     self.locationManager.distanceFilter = kCLDistanceFilterNone;
     self.locationManager.pausesLocationUpdatesAutomatically = NO;
     [self.locationManager startMonitoringSignificantLocationChanges];
-    self.uniqueIdentifier = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     return YES;
 }
 							

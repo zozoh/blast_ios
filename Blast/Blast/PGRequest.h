@@ -49,7 +49,12 @@
 
 - (PGRequestConnection*)startWithCompletionHandler:(PGRequestHandler)handler;
 
-+(PGRequest*)requestForMe;
++(PGRequest*)requestForBlastWithLongitude:(float)log
+                                 latitude:(float)lat;
+
++(PGRequest*)requestForBlast:(NSDictionary *)dict;
+
++(PGRequest*)requestForPostImageData:(UIImage*)image;
 
 @end
 
