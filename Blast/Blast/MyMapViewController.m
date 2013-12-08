@@ -11,6 +11,7 @@
 #import "SVAnnotation.h"
 #import "PGRequest.h"
 #import "BlastAppDelegate.h"
+#import "PGUtility.h"
 
 @interface MyMapViewController ()
 
@@ -38,42 +39,37 @@
     NSDictionary* dict = @{@"bid": bid};
     PGRequest* req = [PGRequest requestForBlastGraph:dict];
     [req startWithCompletionHandler:^(PGRequestConnection *connection, id result, NSError *error) {
-        NSArray* datalist = result[@"data"];
+        NSArray* datalist = result;
+        if(datalist == nil){
+            NSString* s = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://10.10.0.109:3000/api/blasts/graph.json"] encoding:NSUTF8StringEncoding error:nil];
+            datalist = [PGUtility simpleJSONDecode:s];
+        }
         
-        CLLocationCoordinate2D coordinate;
-        coordinate.latitude = 23.134844f;
-        coordinate.longitude = 113.317290f;
-        
-        MKCoordinateRegion region;
-        region.span.latitudeDelta = 10;
-        region.span.longitudeDelta = 10;
-        region.center = coordinate;
-
-        [self.mapView setRegion:region animated:YES];
-        // 设置地图显示的类型及根据范围进行显示
-        [self.mapView regionThatFits:region];
+        [self nextPage:datalist];
     }];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    CLLocationCoordinate2D coordinate;
-    coordinate.latitude = app.lastKnownLocation.coordinate.latitude;
-    coordinate.longitude = app.lastKnownLocation.coordinate.longitude;
+    /*
+     */
+}
 
+-(void)moveCenterToLocate:(NSArray*)locate size:(float)size
+{
+    CLLocationCoordinate2D coordinate;
+    coordinate.latitude = [locate[1] floatValue];
+    coordinate.longitude = [locate[0] floatValue];
+    
     MKCoordinateRegion region;
-    region.span.latitudeDelta = 10;
-    region.span.longitudeDelta = 10;
+    region.span.latitudeDelta = size;
+    region.span.longitudeDelta = size;
     region.center = coordinate;
     // 设置显示位置(动画)
     [self.mapView setRegion:region animated:YES];
     // 设置地图显示的类型及根据范围进行显示
     [self.mapView regionThatFits:region];
-    
-    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(nextPage) userInfo:nil repeats:false];
 }
-
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -81,17 +77,26 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)nextPage
+-(void)nextPage:(id)dataList
 {
-    for (int i=0; i< 100; i++){
+    int i = 0;
+    int total = (int)[dataList[@"total"] integerValue];
+    for (NSDictionary* data in dataList[@"data"]){
         CLLocationCoordinate2D coordinate;
-        coordinate.latitude = 23.134844f + 0.01 * i;
-        coordinate.longitude = 113.317290f + 0.02 * i;
+        coordinate.latitude = [data[@"location"][1] floatValue];
+        coordinate.longitude = [data[@"location"][0] floatValue];
         
         SVAnnotation *annotation = [[SVAnnotation alloc] initWithCoordinate:coordinate];
-        annotation.size = 20 + i * 2;
+        if(i == 0){
+            annotation.title = [data[@"reblaNumber"] stringValue];
+            annotation.pointSize =  20;
+        }else{
+            [self moveCenterToLocate:data[@"location"] size:3];
+        }
+        annotation.size = 20 + [data[@"reblaNumber"] integerValue] / 10;
         annotation.delay = 0.5 * i;
         [self.mapView addAnnotation:annotation];
+        i++;
     }
 }
 
@@ -99,7 +104,6 @@
     if([annotation isKindOfClass:[SVAnnotation class]]) {
         static NSString *identifier = @"currentLocation";
 		SVPulsingAnnotationView *pulsingView = (SVPulsingAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
-		
 		if(pulsingView == nil) {
 			pulsingView = [[SVPulsingAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
             pulsingView.annotationColor = [UIColor colorWithRed:0.678431 green:0 blue:0 alpha:1];

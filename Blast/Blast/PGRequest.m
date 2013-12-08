@@ -81,15 +81,21 @@ static NSString *const kPostHTTPMethod = @"POST";
     }
     return self;
 }
+
 -(void)dealloc
 {
     NSLog(@"PGRequest dealloc");
 }
 
-
-
-
 -(PGRequestConnection *)startWithCompletionHandler:(PGRequestHandler)handler
+{
+    PGRequestConnection *connection = [[PGRequestConnection alloc]init];
+    [connection addRequest:self completionHandler:handler];
+    [connection start];
+    return connection;
+}
+
+-(PGRequestConnection *)startWithCompletionHandler:(PGRequestHandler)handler withHost:(NSString*)host
 {
     PGRequestConnection *connection = [[PGRequestConnection alloc]init];
     [connection addRequest:self completionHandler:handler];

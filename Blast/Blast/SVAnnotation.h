@@ -15,6 +15,7 @@
 @property (nonatomic, readwrite) CLLocationCoordinate2D coordinate;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *subtitle;
+@property float pointSize;
 @property float size;
 @property float delay;
 

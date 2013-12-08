@@ -121,8 +121,7 @@ typedef enum PGRequestConnectionState{
         skipRoundtripIfCached:(BOOL)skipRoundtripCached
 {
     
-
-        
+    
         NSMutableURLRequest *request = nil;
         
         if (!request) {
