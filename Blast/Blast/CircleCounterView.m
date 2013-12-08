@@ -62,11 +62,11 @@
     float radius = CGRectGetWidth(rect)/2.0f - self.circleBorderWidth/2.0f - 4;
     float angleOffset = M_PI_2;
     
-    CGContextSetLineWidth(context, 5.0f);
+    CGContextSetLineWidth(context, 1.0f);
     CGContextBeginPath(context);
     CGContextAddArc(context,
                     CGRectGetMidX(rect), CGRectGetMidY(rect),
-                    radius + 2,
+                    radius,
                     0,
                     M_PI * 2,
                     0);
@@ -108,12 +108,12 @@
     //< Default Parameters
     self.numberColor = [UIColor whiteColor];
     self.numberFont = [UIFont fontWithName:@"Courier-Bold" size:20.0f];
-    self.circleColor = [UIColor redColor];
+    self.circleColor = [UIColor colorWithRed:255/255.0f green:198/255.0f blue:0.0f alpha:0.6];
     self.circleBorderWidth = 1;
     self.timeFormatString = @"%.0f";
     self.circleIncre = NO;
     self.circleTimeInterval = 1.0f;
-    self.outerColor = [UIColor colorWithRed:221/255.0f green:247/255.0f blue:1.0f alpha:1];
+    self.outerColor = [UIColor colorWithRed:221/255.0f green:247/255.0f blue:1.0f alpha:0.7];
     mTimeInSeconds = 20;
     mTimeInterval = 1;
     mCircleSegs = 0;
