@@ -84,6 +84,7 @@
 }
 
 - (IBAction)blastAction:(id)sender {
+    [(UIButton*)sender setEnabled:FALSE];
     NSMutableDictionary* dict = [NSMutableDictionary dictionary];
     [dict setObject:self.currentData[@"_id"] forKey:@"bid"];
     [dict setObject:app.userName forKey:@"me"];

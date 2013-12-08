@@ -85,7 +85,7 @@
                         <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="reblastbutton_3" translatesAutoresizingMaskIntoConstraints="NO" id="UdU-Hr-Jyd">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="reblastbutton_3" translatesAutoresizingMaskIntoConstraints="NO" id="UdU-Hr-Jyd">
                                 <rect key="frame" x="0.0" y="385" width="320" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -157,6 +157,7 @@
                                 <state key="normal" image="reblastbutton_">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="disabled" image="reblastbutton_3"/>
                                 <connections>
                                     <action selector="blastAction:" destination="QUy-BD-bpt" eventType="touchUpInside" id="D5r-PZ-CPx"/>
                                 </connections>
@@ -213,7 +214,6 @@
                         <outletCollection property="hideGroup" destination="Mfj-xa-PQj" id="zgc-zb-JtV"/>
                         <outletCollection property="hideGroup" destination="izL-ZP-0Oe" id="A5l-6G-RJr"/>
                         <outletCollection property="hideGroup" destination="LRg-Lx-lAh" id="E6e-il-65C"/>
-                        <outletCollection property="hideGroup" destination="UdU-Hr-Jyd" id="HeZ-UI-EhW"/>
                         <outletCollection property="hideGroup" destination="hs1-2e-ij7" id="ry8-md-hdr"/>
                     </connections>
                 </viewController>
