@@ -154,7 +154,7 @@
     if(!_pulseAnimationGroup) {
         CAMediaTimingFunction *defaultCurve = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
         _pulseAnimationGroup = [CAAnimationGroup animation];
-        _pulseAnimationGroup.duration = 100;//self.outerPulseAnimationDuration + self.delayBetweenPulseCycles;
+        _pulseAnimationGroup.duration = 100000;//self.outerPulseAnimationDuration + self.delayBetweenPulseCycles;
 //        _pulseAnimationGroup.repeatCount = 1;
         _pulseAnimationGroup.removedOnCompletion = NO;
         _pulseAnimationGroup.timingFunction = defaultCurve;
@@ -187,7 +187,7 @@
             CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
             animation.fromValue = @1.0;
             animation.toValue = @1.0;
-            animation.duration = 2;
+            animation.duration = 10000;
             animation.timingFunction = defaultCurve;
             animation.removedOnCompletion = NO;
             animation.fillMode = kCAFillModeForwards;
@@ -195,7 +195,7 @@
         }
         else {
             CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
-            animation.duration = 2;//self.outerPulseAnimationDuration;
+            animation.duration = 10000;//self.outerPulseAnimationDuration;
             animation.values = @[@0.45, @0.45, @0.25];
             animation.keyTimes = @[@0, @0.2, @1];
             animation.removedOnCompletion = NO;
