@@ -13,6 +13,11 @@
 
 @property (nonatomic,strong)UIView *activityIndicatorView;
 @property (nonatomic,strong)UIActivityIndicatorView *activityIndicator;
+
+@property (nonatomic, strong) UIImageView *imageView;
+
+@property (nonatomic,strong) UIImageView *zoneView;
+
 @end
 
 @implementation BTPostTextViewController
@@ -33,7 +38,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     if (!self.textView) {
-        self.textView = [[UITextView alloc]initWithFrame:CGRectMake(10, 70, 300, 200)];
+        self.textView = [[UITextView alloc]initWithFrame:CGRectMake(140, 100, 220, 60)];
         self.textView.contentInset = UIEdgeInsetsMake(-70, 5, 0, 0);
         self.textView.showsHorizontalScrollIndicator = NO;
         self.textView.showsVerticalScrollIndicator = NO;
@@ -47,6 +52,22 @@
         [self.view addSubview:self.textView];
     }
     
+    if (!self.imageView) {
+        self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 10, 60, 60)];
+//        self.imageView.image = self.postImage;
+        [self.view addSubview:self.imageView];
+    }
+    
+    
+    if (!self.zoneView) {
+        self.zoneView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 80, 320, 540)];
+        UIImage *image = [UIImage imageNamed:@"zone.png"];
+        self.zoneView.image = image;
+        [self.view addSubview:self.zoneView];
+    }
+    
+    self.view.backgroundColor = [UIColor colorWithRed:239 green:244 blue:244 alpha:1];
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Send" style:UIBarButtonItemStyleBordered target:self action:@selector(onSend:)];
 
 
@@ -55,7 +76,6 @@
 -(void)onSend:(id)sender
 {
     [self startAnimatingPhotoLoadingIndicator];
-//    self.postImage = [UIImage imageNamed:@"123.jpg"];
     PGRequest *request = [PGRequest requestForPostImageData:self.postImage];
     [request startWithCompletionHandler:^(PGRequestConnection *connection, id result, NSError *error) {
         if (!error&&[result isKindOfClass:[NSDictionary class]]) {
