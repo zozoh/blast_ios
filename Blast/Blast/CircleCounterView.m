@@ -114,7 +114,7 @@
     self.circleIncre = NO;
     self.circleTimeInterval = 1.0f;
     self.outerColor = [UIColor colorWithRed:221/255.0f green:247/255.0f blue:1.0f alpha:0.7];
-    mTimeInSeconds = 20;
+    mTimeInSeconds = 0;
     mTimeInterval = 1;
     mCircleSegs = 0;
     self.backgroundColor = [UIColor clearColor];
