@@ -36,6 +36,7 @@
 {
     NSString* userName = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
     self.isDownloading = false;
+    /*
     if(userName == nil){
         __weak BlastWelcomeViewController* sellf = self;
         PGRequest* request = [[PGRequest alloc] init];
@@ -52,7 +53,7 @@
         }];
     }else{
         app.userName = userName;
-    }
+    }*/
     [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(nextPage) userInfo:nil repeats:false];
 }
 

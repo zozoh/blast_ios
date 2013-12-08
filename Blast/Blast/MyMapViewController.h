@@ -12,4 +12,5 @@
 @interface MyMapViewController : UIViewController <MKMapViewDelegate>
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) NSDictionary* data;
+- (IBAction)back:(id)sender;
 @end

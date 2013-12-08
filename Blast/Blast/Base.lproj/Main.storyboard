@@ -31,13 +31,14 @@
                             <outletCollection property="gestureRecognizers" destination="bPd-bi-1lf" appends="YES" id="yiY-LR-sh4"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="o2i-1H-2S6">
+                    <navigationItem key="navigationItem" title="Title" id="o2i-1H-2S6">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="dIs-Eu-c5b">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Dg0-Xe-oBy">
-                                <rect key="frame" x="16" y="5" width="71" height="33"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Dg0-Xe-oBy">
+                                <rect key="frame" x="16" y="11" width="62" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Take">
+                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                <state key="normal" image="baricon-04">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -46,11 +47,11 @@
                             </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Take" style="plain" id="MaH-Fr-NMe">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3wB-bn-VeR">
-                                <rect key="frame" x="233" y="5" width="71" height="33"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3wB-bn-VeR">
+                                <rect key="frame" x="243" y="11" width="61" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Show">
+                                <state key="normal" image="baricon-03">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -81,11 +82,11 @@
                         <viewControllerLayoutGuide type="bottom" id="zqL-3J-ekg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gMD-aP-Fq6">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hww-Nz-SVB" customClass="MRZoomScrollView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="573"/>
+                                <rect key="frame" x="0.0" y="-44" width="320" height="573"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </scrollView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Bu-MK-4Gg">
@@ -151,8 +152,39 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" id="jfD-3R-bXH">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="gWa-QO-5C5">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Zqu-94-7zS">
+                                <rect key="frame" x="16" y="11" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" image="baricon-06">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="back:" destination="QUy-BD-bpt" eventType="touchUpInside" id="p5R-S9-KB6"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Yct-KK-419">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="NzK-gM-dNt">
+                                <rect key="frame" x="282" y="11" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" image="baricon-03">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showMapView:" destination="QUy-BD-bpt" eventType="touchUpInside" id="b7w-NH-iVv"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <connections>
+                            <outlet property="backBarButtonItem" destination="gWa-QO-5C5" id="q3c-YF-gZZ"/>
+                        </connections>
+                    </navigationItem>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="blastContent" destination="80o-u4-dpR" id="arG-pn-LEz"/>
@@ -197,7 +229,25 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="uG3-Cp-CRe"/>
+                    <navigationItem key="navigationItem" id="uG3-Cp-CRe">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="p2M-Iw-5Vp">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BPo-dL-xAt">
+                                <rect key="frame" x="16" y="11" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" image="baricon-06">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="back:" destination="43v-Ve-wYt" eventType="touchUpInside" id="fJM-pR-yt5"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <connections>
+                            <outlet property="backBarButtonItem" destination="p2M-Iw-5Vp" id="sSm-iN-6to"/>
+                        </connections>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="mapView" destination="li9-Ln-sQK" id="RFT-vA-7T9"/>
                     </connections>
@@ -247,6 +297,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="780-wm-VsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.77711564779999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -326,6 +377,9 @@
     </scenes>
     <resources>
         <image name="Quinn_Square_0" width="60" height="60"/>
+        <image name="baricon-03" width="22" height="22"/>
+        <image name="baricon-04" width="22" height="22"/>
+        <image name="baricon-06" width="22" height="22"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

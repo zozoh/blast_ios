@@ -23,5 +23,5 @@
 - (IBAction)showMapView:(id)sender;
 - (IBAction)blastAction:(id)sender;
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *hideGroup;
-
+- (IBAction)back:(id)sender;
 @end

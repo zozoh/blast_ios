@@ -64,9 +64,6 @@
     }
     
     self.title = @"Detail Pic";
-    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Trace" style:UIBarButtonItemStylePlain
-                                                target:self action:@selector(showMapView:)];
-    self.navigationItem.rightBarButtonItem = anotherButton;
 }
 
 - (IBAction)showMapView:(id)sender {
@@ -76,6 +73,10 @@
 }
 
 - (IBAction)blastAction:(id)sender {
+}
+
+- (IBAction)back:(id)sender{
+    [[self navigationController] popViewControllerAnimated:YES];
 }
 
 -(void)MRZoomScrollViewClick:(id)sender
