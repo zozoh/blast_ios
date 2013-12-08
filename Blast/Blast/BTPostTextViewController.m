@@ -8,6 +8,7 @@
 
 #import "BTPostTextViewController.h"
 #import "PGRequest.h"
+#import "BlastMainTableViewController.h"
 
 @interface BTPostTextViewController ()<UITextViewDelegate>
 
@@ -37,12 +38,23 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    if (!self.zoneView) {
+        self.zoneView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 150, 320, 540)];
+        UIImage *image = [UIImage imageNamed:@"zone.png"];
+        self.zoneView.image = image;
+        self.zoneView.backgroundColor = [UIColor colorWithRed:194 green:244 blue:244 alpha:0];
+        [self.view addSubview:self.zoneView];
+    }
+    
     if (!self.textView) {
-        self.textView = [[UITextView alloc]initWithFrame:CGRectMake(140, 100, 220, 60)];
+        self.textView = [[UITextView alloc]initWithFrame:CGRectMake(85, 85, 210, 60)];
         self.textView.contentInset = UIEdgeInsetsMake(-70, 5, 0, 0);
         self.textView.showsHorizontalScrollIndicator = NO;
         self.textView.showsVerticalScrollIndicator = NO;
         [self.textView.layer setCornerRadius:5];
+        self.textView.text = @"Say Something";
+        self.textView.textColor = [UIColor lightGrayColor];
         [self.textView setBackgroundColor:[UIColor whiteColor]];
         [self.textView becomeFirstResponder];
         
@@ -53,24 +65,25 @@
     }
     
     if (!self.imageView) {
-        self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 10, 60, 60)];
-//        self.imageView.image = self.postImage;
+        self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(20, 80, 60, 60)];
+        self.imageView.image = self.postImage;
+
         [self.view addSubview:self.imageView];
     }
     
     
-    if (!self.zoneView) {
-        self.zoneView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 80, 320, 540)];
-        UIImage *image = [UIImage imageNamed:@"zone.png"];
-        self.zoneView.image = image;
-        [self.view addSubview:self.zoneView];
-    }
+
     
-    self.view.backgroundColor = [UIColor colorWithRed:239 green:244 blue:244 alpha:1];
+    self.view.backgroundColor = [UIColor whiteColor];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Send" style:UIBarButtonItemStyleBordered target:self action:@selector(onSend:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Blast" style:UIBarButtonItemStyleBordered target:self action:@selector(onSend:)];
 
 
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    self.imageView.image = self.postImage;
 }
 
 -(void)onSend:(id)sender
@@ -81,9 +94,6 @@
         if (!error&&[result isKindOfClass:[NSDictionary class]]) {
             NSDictionary *dict = (NSDictionary*)[(NSDictionary*)result objectForKey:@"data"];
             NSString *_id = [NSString stringWithFormat:@"%@",[dict objectForKey:@"_id"]];
-            NSLog(@"id:%@",_id);
-           
-            NSLog(@"%@",dict);
             NSMutableDictionary *obj = [[NSMutableDictionary alloc]init];
             [obj setValue:_id forKey:@"picture"];
             [obj setValue:[NSNumber numberWithInt:300] forKey:@"live"];
@@ -94,6 +104,14 @@
             [req startWithCompletionHandler:^(PGRequestConnection *connection, id result, NSError *error) {
                 if (!error && [result isKindOfClass:[NSDictionary class]]) {
                     [self stopAnimatingPhotoLoadingIndicator];
+                    for (UIViewController *ctr in self.navigationController.viewControllers) {
+                        if ([ctr isKindOfClass:[BlastMainTableViewController class]]) {
+                            BlastMainTableViewController *controller = (BlastMainTableViewController *)ctr;
+                            [controller appendNewSelfPost:obj];
+                            
+                        }
+                        [self.navigationController popToViewController:self animated:YES];
+                    }
                     NSLog(@"%@",result);
                 }
                 else

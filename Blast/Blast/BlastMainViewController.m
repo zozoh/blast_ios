@@ -22,6 +22,7 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -31,8 +32,8 @@
 }
 
 - (IBAction)startPostBlast:(id)sender {
-//    BTCameraViewController *control = [[BTCameraViewController alloc] init];
-    BTPostTextViewController *control = [[BTPostTextViewController alloc]init];
+    BTCameraViewController *control = [[BTCameraViewController alloc] init];
+//    BTPostTextViewController *control = [[BTPostTextViewController alloc]init];
     [self.navigationController pushViewController:control animated:NO];
     [self imgSlideInFromLeft: control.view];
 }
