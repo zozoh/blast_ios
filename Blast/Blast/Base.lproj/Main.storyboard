@@ -102,7 +102,7 @@
                                 <rect key="frame" x="0.0" y="-49" width="320" height="573"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </scrollView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="big_shell" translatesAutoresizingMaskIntoConstraints="NO" id="iWI-6f-21q">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="big_shell2" translatesAutoresizingMaskIntoConstraints="NO" id="iWI-6f-21q">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="530"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -430,7 +430,7 @@
         <image name="baricon-03" width="22" height="22"/>
         <image name="baricon-04" width="22" height="22"/>
         <image name="baricon-06" width="22" height="22"/>
-        <image name="big_shell" width="320" height="568"/>
+        <image name="big_shell2" width="320" height="568"/>
         <image name="homepageshell" width="320" height="152"/>
         <image name="reblastbutton_" width="320" height="65"/>
         <image name="reblastbutton_3" width="320" height="65"/>
