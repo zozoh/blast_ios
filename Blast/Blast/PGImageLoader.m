@@ -39,6 +39,11 @@
     NSString *url = [NSString stringWithFormat:@"%@%@%@%@", PG_URL_PREFIX,PG_BASE_URL, @"/api/photo/",id ];
     [self loadImageWithURL:url imageType:type completionHandler:handler];
 }
+-(void)loadAvataImageWithId:(NSString *)id imageType:(int)type completionHandler:(PGImageLoaderHandler)handler
+{
+    NSString *url = [NSString stringWithFormat:@"%@%@%@%@", PG_URL_PREFIX,PG_BASE_URL, @"/api/avatar?unm=",id];
+    [self loadImageWithURL:url imageType:type completionHandler:handler];
+}
 
 -(void)loadImageWithURL:(NSString *)url completionhandler:(PGImageLoaderHandler)handler
 {
