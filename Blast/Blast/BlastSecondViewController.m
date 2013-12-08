@@ -59,12 +59,15 @@
         
         NSDate* date = [NSDate dateWithTimeIntervalSince1970:[self.currentData[@"createTime"] longValue] / 1000.0f ];
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
-        [df setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+        [df setDateFormat:@"MM-dd"];
         self.createDate.text = [df stringFromDate:date];
         self.blastCount.text = [self.currentData[@"reblaNumber"] stringValue];
         self.blastContent.text = self.currentData[@"content"];
         self.posterName.text = self.currentData[@"owner"];
+        self.location.text = [NSString stringWithFormat:@"%f,%f", [self.currentData[@"location"][0] floatValue], [self.currentData[@"location"][1] floatValue]];
+        __weak BlastSecondViewController* selff = self;
         [[PGImageLoader sharedLoader] loadAvataImageWithId:self.currentData[@"owner"] imageType:0 completionHandler:^(UIImage *image, int imageType, NSError *error) {
+            selff.headIcon.image = image;
 //            self.avata.image = image;
         }];
     }
