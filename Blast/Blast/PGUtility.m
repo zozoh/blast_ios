@@ -22,6 +22,12 @@
     return [NSString stringWithFormat:@"%@%@%@",pre,domain,post ? :@""];
 }
 
++(NSString*)buildPingooUrlWithPre:(NSString *)pre withPost:(NSString *)post withHost:(NSString*)host
+{
+    return [NSString stringWithFormat:@"%@%@%@",pre,host,post ? :@""];
+}
+
+
 +(NSString*)buildPictureUrlWithFullUrl:(NSString *)fullUrl withPath:(NSString *)path
 {
     NSArray *array = [fullUrl componentsSeparatedByString:@"/"];

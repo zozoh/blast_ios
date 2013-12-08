@@ -64,7 +64,7 @@
         self.blastCount.text = [self.currentData[@"reblaNumber"] stringValue];
         self.blastContent.text = self.currentData[@"content"];
         self.posterName.text = self.currentData[@"owner"];
-        [[PGImageLoader sharedLoader] loadImageWithId:self.currentData[@"owner"] imageType:0 completionHandler:^(UIImage *image, int imageType, NSError *error) {
+        [[PGImageLoader sharedLoader] loadAvataImageWithId:self.currentData[@"owner"] imageType:0 completionHandler:^(UIImage *image, int imageType, NSError *error) {
 //            self.avata.image = image;
         }];
     }
@@ -75,6 +75,7 @@
 - (IBAction)showMapView:(id)sender {
     MyMapViewController* mapController = [[self storyboard] instantiateViewControllerWithIdentifier:@"MapViewController"];
     mapController.data = self.currentData;
+    [mapController loadBlastGraph:self.currentData[@"_id"]];
     [[self navigationController] pushViewController:mapController animated:YES];
 }
 

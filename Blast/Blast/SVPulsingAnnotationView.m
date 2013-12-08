@@ -100,7 +100,6 @@
 - (void)willMoveToSuperview:(UIView *)newSuperview {
     if(newSuperview) {
         [NSTimer scheduledTimerWithTimeInterval:((SVAnnotation*)self.annotation).delay target:self selector:@selector(start) userInfo:nil repeats:NO];
-        // [self popIn];
     }
 }
 
@@ -154,11 +153,10 @@
 - (CAAnimationGroup*)pulseAnimationGroup {
     if(!_pulseAnimationGroup) {
         CAMediaTimingFunction *defaultCurve = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
-        
         _pulseAnimationGroup = [CAAnimationGroup animation];
-        _pulseAnimationGroup.duration = self.outerPulseAnimationDuration + self.delayBetweenPulseCycles;
+        _pulseAnimationGroup.duration = 100;//self.outerPulseAnimationDuration + self.delayBetweenPulseCycles;
 //        _pulseAnimationGroup.repeatCount = 1;
-        _pulseAnimationGroup.removedOnCompletion = YES;
+        _pulseAnimationGroup.removedOnCompletion = NO;
         _pulseAnimationGroup.timingFunction = defaultCurve;
         
         NSMutableArray *animations = [NSMutableArray new];
@@ -172,6 +170,7 @@
                                       (id)[[self haloImageWithRadius:35] CGImage],
                                       (id)[[self haloImageWithRadius:50] CGImage]
                                       ];
+            imageAnimation.removedOnCompletion = NO;
             [animations addObject:imageAnimation];
         }
         
@@ -179,15 +178,16 @@
         CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale.xy"];
         pulseAnimation.fromValue = @0.0;
         pulseAnimation.toValue = @1.0;
+        pulseAnimation.timeOffset = 0;
         pulseAnimation.duration = self.outerPulseAnimationDuration;
+        pulseAnimation.removedOnCompletion = NO;
         [animations addObject:pulseAnimation];
-        
         
         if(!self.shouldBeFlat) {
             CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
             animation.fromValue = @1.0;
-            animation.toValue = @0.0;
-            animation.duration = self.outerPulseAnimationDuration;
+            animation.toValue = @1.0;
+            animation.duration = 2;
             animation.timingFunction = defaultCurve;
             animation.removedOnCompletion = NO;
             animation.fillMode = kCAFillModeForwards;
@@ -195,13 +195,12 @@
         }
         else {
             CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
-            animation.duration = self.outerPulseAnimationDuration;
-            animation.values = @[@0.45, @0.45, @0];
+            animation.duration = 2;//self.outerPulseAnimationDuration;
+            animation.values = @[@0.45, @0.45, @0.25];
             animation.keyTimes = @[@0, @0.2, @1];
             animation.removedOnCompletion = NO;
             [animations addObject:animation];
         }
-        
         _pulseAnimationGroup.animations = animations;
     }
     return _pulseAnimationGroup;
@@ -213,13 +212,14 @@
     if(!_whiteDotLayer) {
         _whiteDotLayer = [CALayer layer];
         _whiteDotLayer.bounds = self.bounds;
-        _whiteDotLayer.contents = (id)[self circleImageWithColor:[UIColor whiteColor] height:10].CGImage;
+        float size = [(SVAnnotation*)_annotation pointSize];
+        _whiteDotLayer.contents = (id)[self circleImageWithColor:[UIColor whiteColor] height:size == 0? 10: size].CGImage;
         _whiteDotLayer.position = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
         _whiteDotLayer.contentsGravity = kCAGravityCenter;
         _whiteDotLayer.contentsScale = [UIScreen mainScreen].scale;
         _whiteDotLayer.shadowColor = [UIColor blackColor].CGColor;
         _whiteDotLayer.shadowOffset = CGSizeMake(0, 2);
-        _whiteDotLayer.shadowRadius = 3;
+        _whiteDotLayer.shadowRadius = size / 2.0 - 1;
         _whiteDotLayer.shadowOpacity = 0.3;
         _whiteDotLayer.shouldRasterize = YES;
         _whiteDotLayer.rasterizationScale = [UIScreen mainScreen].scale;
@@ -230,12 +230,14 @@
 - (CALayer*)colorDotLayer {
     if(!_colorDotLayer) {
         _colorDotLayer = [CALayer layer];
-        _colorDotLayer.bounds = CGRectMake(0, 0, 6, 6);
+        float size = [(SVAnnotation*)_annotation pointSize];
+        size = (size == 0? 6: size * 0.8);
+        _colorDotLayer.bounds = CGRectMake(0, 0, size, size);
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
         _colorDotLayer.allowsGroupOpacity = YES;
 #endif        
         _colorDotLayer.backgroundColor = self.annotationColor.CGColor;
-        _colorDotLayer.cornerRadius = 3;
+        _colorDotLayer.cornerRadius = size / 2;
         _colorDotLayer.position = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {

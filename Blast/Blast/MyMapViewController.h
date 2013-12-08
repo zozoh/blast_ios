@@ -13,4 +13,5 @@
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) NSDictionary* data;
 - (IBAction)back:(id)sender;
+- (void)loadBlastGraph:(id)bid;
 @end
