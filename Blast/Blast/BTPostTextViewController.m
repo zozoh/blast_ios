@@ -7,17 +7,15 @@
 //
 
 #import "BTPostTextViewController.h"
-#import "PGRequest.h"
 #import "BlastMainTableViewController.h"
 #import "BlastMainViewController.h"
+#import "BlastNetworkClient.h"
 
 @interface BTPostTextViewController ()<UITextViewDelegate>
 
 @property (nonatomic,strong)UIView *activityIndicatorView;
 @property (nonatomic,strong)UIActivityIndicatorView *activityIndicator;
-
 @property (nonatomic, strong) UIImageView *imageView;
-
 @property (nonatomic,strong) UIImageView *zoneView;
 
 @end
@@ -72,14 +70,8 @@
         [self.view addSubview:self.imageView];
     }
     
-    
-
-    
     self.view.backgroundColor = [UIColor whiteColor];
-    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Blast" style:UIBarButtonItemStyleBordered target:self action:@selector(onSend:)];
-
-
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -90,8 +82,7 @@
 -(void)onSend:(id)sender
 {
     [self startAnimatingPhotoLoadingIndicator];
-    PGRequest *request = [PGRequest requestForPostImageData:self.postImage];
-    [request startWithCompletionHandler:^(PGRequestConnection *connection, id result, NSError *error) {
+    [[BlastNetworkClient shareClient] postImageData:self.postImage completion:^(id result, NSError *error) {
         if (!error&&[result isKindOfClass:[NSDictionary class]]) {
             NSDictionary *dict = (NSDictionary*)[(NSDictionary*)result objectForKey:@"data"];
             NSString *_id = [NSString stringWithFormat:@"%@",[dict objectForKey:@"_id"]];
@@ -101,8 +92,7 @@
             [obj setValue:[NSString stringWithFormat:@"[%f,%f]",113.317290f,23.134844f] forKey:@"location"];
             [obj setValue:[NSNumber numberWithInt:897] forKey:@"reblaNumber"];
             [obj setValue:self.textView.text forKey:@"content"];
-            PGRequest *req = [PGRequest requestForBlast:obj];
-            [req startWithCompletionHandler:^(PGRequestConnection *connection, id result, NSError *error) {
+            [[BlastNetworkClient shareClient] postBlast:obj completion:^(id result, NSError *error) {
                 if (!error && [result isKindOfClass:[NSDictionary class]]) {
                     [self stopAnimatingPhotoLoadingIndicator];
                     for (UIViewController *ctr in self.navigationController.viewControllers) {
@@ -131,7 +121,6 @@
             [self stopAnimatingPhotoLoadingIndicator];
         }
     }];
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -154,9 +143,6 @@
 
         self.activityIndicator.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleBottomMargin;
         [self.activityIndicatorView addSubview:self.activityIndicator];
-        
-
-        
     }
     self.activityIndicatorView.hidden = NO;
     self.activityIndicator.center = CGPointMake(CGRectGetMidX(cellBounds), CGRectGetMidY(cellBounds)*0.7);
@@ -169,7 +155,6 @@
         [self.activityIndicatorView setHidden:YES];
     }
 }
-
 
 #pragma mark TextViewDelegate
 

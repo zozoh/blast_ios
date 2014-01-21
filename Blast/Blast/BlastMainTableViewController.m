@@ -9,8 +9,6 @@
 #import "BlastMainTableViewController.h"
 #import "BlastSecondViewController.h"
 #import "BlastItemCell.h"
-#import "PGRequest.h"
-#import "PGUtility.h"
 #import "BlastAppDelegate.h"
 
 @interface BlastMainTableViewController ()

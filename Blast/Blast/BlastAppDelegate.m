@@ -7,7 +7,7 @@
 //
 
 #import "BlastAppDelegate.h"
-#import "PGRequest.h"
+#import "BlastNetworkClient.h"
 
 @implementation BlastAppDelegate
 BlastAppDelegate* app;
@@ -51,9 +51,8 @@ BlastAppDelegate* app;
 }
 
 - (void)fetchLastestBlast:(id)lastid block:(FetchResult)block{
-    PGRequest *request = [PGRequest requestForBlastWithLongitude:app.lastKnownLocation.coordinate.longitude latitude:app.lastKnownLocation.coordinate.latitude bid:lastid];
-    [request startWithCompletionHandler:^(PGRequestConnection *connection, id result, NSError *error) {
-        if ([result isKindOfClass:[NSDictionary class]]) {
+    [[BlastNetworkClient shareClient] fetchBlastWithCLLocation:app.lastKnownLocation bid:lastid completion:^(id result, NSError *error) {
+            if ([result isKindOfClass:[NSDictionary class]]) {
             NSDictionary *dict = (NSDictionary*)result;
             __block NSArray *data = (NSArray*)[dict objectForKey:@"data"];
             block(data);
