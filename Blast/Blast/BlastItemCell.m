@@ -8,9 +8,8 @@
 
 #import "BlastItemCell.h"
 #import "CircleDownCounter.h"
-#import "PGImageLoader.h"
+#import "BlastNetworkClient.h"
 #import "BlastAppDelegate.h"
-#import "PGRequest.h"
 
 @implementation BlastItemCell
 
@@ -50,15 +49,19 @@
     self.receiveTime.text = [df stringFromDate:date];
     self.blastCount.text = [self.data[@"reblaNumber"] stringValue];
     self.caption.text = self.data[@"content"];
-    // Load Small Pic;
     __weak BlastItemCell* selff = self;
     selff.smallpic.image = nil;
+    [[BlastNetworkClient shareClient] LoadImage:self.data[@"picture"] toImageView:selff.smallpic isAvata:NO];
+    
+    /*
     [[PGImageLoader sharedLoader]loadImageWithId:self.data[@"picture"] imageType:0 completionHandler:^(UIImage *image, int imageType, NSError *error) {
         if (!error) {
             selff.smallpic.image = image;
             selff.smallImg = image;
         }
     }];
+    */
+    
 }
 
 -(UIImage*)getGrayImage:(UIImage*)sourceImage
@@ -88,14 +91,11 @@
     [dict setObject:app.userName forKey:@"me"];
     [dict setObject:[NSString stringWithFormat:@"%f", app.lastKnownLocation.coordinate.longitude] forKey:@"lon"];
     [dict setObject:[NSString stringWithFormat:@"%f", app.lastKnownLocation.coordinate.latitude] forKey:@"lat"];
-    PGRequest* req = [PGRequest requestForReBlast:dict];
-    [req startWithCompletionHandler:^(PGRequestConnection *connection, id result, NSError *error) {
-        if(error){
-            NSLog(@"Send Fail");
-        }
+    [[BlastNetworkClient shareClient] POST:@"/api/blasts/reblast" parameters:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-
 }
 
 @end

@@ -9,8 +9,7 @@
 #import "BlastSecondViewController.h"
 #import "CircleDownCounter.h"
 #import "MyMapViewController.h"
-#import "PGRequest.h"
-#import "PGImageLoader.h"
+#import "BlastNetworkClient.h"
 #import "BlastAppDelegate.h"
 
 @interface BlastSecondViewController ()
@@ -69,11 +68,7 @@
         self.blastContent.text = self.currentData[@"content"];
         self.posterName.text = self.currentData[@"owner"];
         self.location.text = [NSString stringWithFormat:@"%f,%f", [self.currentData[@"location"][0] floatValue], [self.currentData[@"location"][1] floatValue]];
-        __weak BlastSecondViewController* selff = self;
-        [[PGImageLoader sharedLoader] loadAvataImageWithId:self.currentData[@"owner"] imageType:0 completionHandler:^(UIImage *image, int imageType, NSError *error) {
-            selff.headIcon.image = image;
-//            self.avata.image = image;
-        }];
+        [[BlastNetworkClient shareClient] LoadImage:self.currentData[@"owner"] toImageView:self.headIcon isAvata:YES];
     }
     
     self.title = self.currentData[@"content"];
@@ -93,12 +88,10 @@
     [dict setObject:app.userName forKey:@"me"];
     [dict setObject:[NSString stringWithFormat:@"%f", app.lastKnownLocation.coordinate.longitude] forKey:@"lon"];
     [dict setObject:[NSString stringWithFormat:@"%f", app.lastKnownLocation.coordinate.latitude] forKey:@"lat"];
-    PGRequest* req = [PGRequest requestForReBlast:dict];
-    [req startWithCompletionHandler:^(PGRequestConnection *connection, id result, NSError *error) {
-        if(error){
-            NSLog(@"Send Fail");
-        }
+    [[BlastNetworkClient shareClient] POST:@"/api/blasts/reblast" parameters:dict success:^(NSURLSessionDataTask *task, id responseObject) {
         [self back:nil];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
     }];
 }
 

@@ -9,7 +9,6 @@
 #import "BTCameraViewController.h"
 #import "BTPostTextViewController.h"
 #import "BlastNetworkClient.h"
-#import "UIImageView+AFNetworking.h"
 
 @interface BTCameraViewController ()
 
@@ -41,11 +40,7 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(onNext:)];
 	[self pickMediaFromSource:UIImagePickerControllerSourceTypeCamera];
     
-    self.imageView.image = nil;
-    [self.imageView cancelImageRequestOperation];
-    
-    NSURL *imageURL = [[BlastNetworkClient shareClient] generateImageURL:@"46b6e47637f8ec0090ddebadcecff49d215be3fa"];
-    [self.imageView setImageWithURL:imageURL];
+    [[BlastNetworkClient shareClient] LoadImage:@"46b6e47637f8ec0090ddebadcecff49d215be3fa" toImageView:self.imageView isAvata:NO];
 }
 
 - (void)didReceiveMemoryWarning

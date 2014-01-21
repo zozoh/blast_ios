@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import "UIImageView+AFNetworking.h"
 #import "AFHTTPSessionManager.h"
 
 @interface BlastNetworkClient : AFHTTPSessionManager
@@ -16,4 +17,5 @@
 - (NSURLSessionDataTask *)postBlast:(NSDictionary*)dict completion:(void (^)(id results, NSError *error) )completion;
 - (NSURLSessionDataTask *)fetchBlastWithCLLocation:(CLLocation*)location bid:(NSString*)bid completion:(void (^)(id results, NSError *error) )completion;
 - (NSURL*)generateImageURL:(NSString*)key;
+- (void)LoadImage:(NSString*)key toImageView:(UIImageView*)view isAvata:(BOOL)isAvata;
 @end

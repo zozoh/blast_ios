@@ -75,4 +75,10 @@
     return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@", APP_BASE_URL, @"/api/avatar?unm=",key]];
 }
 
+- (void)LoadImage:(NSString*)key toImageView:(UIImageView*)view isAvata:(BOOL)isAvata{
+    view.image = nil;
+    [view cancelImageRequestOperation];
+    [view setImageWithURL: isAvata? [self generateAvataURL:key] :[self generateImageURL:key]];
+}
+
 @end

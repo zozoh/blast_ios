@@ -9,9 +9,8 @@
 #import "MyMapViewController.h"
 #import "SVPulsingAnnotationView.h"
 #import "SVAnnotation.h"
-#import "PGRequest.h"
+#import "BlastNetworkClient.h"
 #import "BlastAppDelegate.h"
-#import "PGUtility.h"
 
 @interface MyMapViewController ()
 
@@ -36,16 +35,11 @@
 
 - (void)loadBlastGraph:(id)bid
 {
-    NSDictionary* dict = @{@"bid": bid};
-    PGRequest* req = [PGRequest requestForBlastGraph:dict];
-    [req startWithCompletionHandler:^(PGRequestConnection *connection, id result, NSError *error) {
-        NSArray* datalist = result;
-        if(datalist == nil){
-            NSString* s = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://10.10.0.109:3000/api/blasts/graph.json"] encoding:NSUTF8StringEncoding error:nil];
-            datalist = [PGUtility simpleJSONDecode:s];
-        }
-        
+    [[BlastNetworkClient shareClient] GET:@"api/blasts/graph" parameters:@{@"bid": bid} success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray* datalist = responseObject;
         [self nextPage:datalist];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
     }];
 }
 

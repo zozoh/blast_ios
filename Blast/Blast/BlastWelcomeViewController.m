@@ -7,9 +7,8 @@
 //
 
 #import "BlastWelcomeViewController.h"
-#import "PGRequest.h"
+#import "BlastNetworkClient.h"
 #import "BlastAppDelegate.h"
-#import "PGUtility.h"
 
 @interface BlastWelcomeViewController ()
 @property BOOL isDownloading;
@@ -39,17 +38,16 @@
     if(userName == nil){
         __weak BlastWelcomeViewController* sellf = self;
         self.isDownloading = true;
-        PGRequest* request = [PGRequest requestForUserName: app.uniqueIdentifier];
-        [request startWithCompletionHandler:^(PGRequestConnection *connection, id result, NSError *error) {
-            NSDictionary* resultJson = result;
-            if(!error){
-                app.userName = resultJson[@"data"];
-                [[NSUserDefaults standardUserDefaults] setObject:app.userName forKey:@"username"];
-                [[NSUserDefaults standardUserDefaults] synchronize];
-                sellf.isDownloading = false;
-                [NSTimer cancelPreviousPerformRequestsWithTarget:self selector:@selector(nextPage) object:nil];
-                [sellf nextPage];
-            }
+        [[BlastNetworkClient shareClient] POST:@"/api/signup" parameters:@{@"uid": userName} success:^(NSURLSessionDataTask *task, id responseObject) {
+            NSDictionary* resultJson = responseObject;
+            app.userName = resultJson[@"data"];
+            [[NSUserDefaults standardUserDefaults] setObject:app.userName forKey:@"username"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            sellf.isDownloading = false;
+            [NSTimer cancelPreviousPerformRequestsWithTarget:self selector:@selector(nextPage) object:nil];
+            [sellf nextPage];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            ;
         }];
     }else{
         app.userName = userName;
