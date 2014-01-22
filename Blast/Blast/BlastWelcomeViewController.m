@@ -38,7 +38,7 @@
     if(userName == nil){
         __weak BlastWelcomeViewController* sellf = self;
         self.isDownloading = true;
-        [[BlastNetworkClient shareClient] POST:@"/api/signup" parameters:@{@"uid": userName} success:^(NSURLSessionDataTask *task, id responseObject) {
+        [[BlastNetworkClient shareClient] POST:@"/api/signup" parameters:@{@"uid": app.uniqueIdentifier} success:^(NSURLSessionDataTask *task, id responseObject) {
             NSDictionary* resultJson = responseObject;
             app.userName = resultJson[@"data"];
             [[NSUserDefaults standardUserDefaults] setObject:app.userName forKey:@"username"];
@@ -47,7 +47,10 @@
             [NSTimer cancelPreviousPerformRequestsWithTarget:self selector:@selector(nextPage) object:nil];
             [sellf nextPage];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            ;
+            NSLog(@"Log: %@", [error localizedDescription]);
+            sellf.isDownloading = false;
+            [NSTimer cancelPreviousPerformRequestsWithTarget:self selector:@selector(nextPage) object:nil];
+            [sellf nextPage];
         }];
     }else{
         app.userName = userName;
